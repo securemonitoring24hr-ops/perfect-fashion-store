@@ -73,7 +73,15 @@ nav.scrolled { background: rgba(17,17,16,.93); backdrop-filter: blur(20px); -web
 /* ===== HERO ===== */
 .hero { position: relative; height: 100vh; width: 100%; overflow: hidden; display: flex; align-items: flex-end; }
 .hero-video-wrap { position: absolute; inset: 0; width: 100%; height: 100%; }
-.hero-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.hero-video-wrap video::-webkit-media-controls,
+.hero-video-wrap video::-webkit-media-controls-enclosure,
+.hero-video-wrap video::-webkit-media-controls-panel,
+.hero-video-wrap video::-webkit-media-controls-play-button,
+.hero-video-wrap video::-webkit-media-controls-timeline,
+.hero-video-wrap video::-webkit-media-controls-fullscreen-button,
+.hero-video-wrap video::-webkit-media-controls-overlay-play-button,
+.hero-video-wrap video::-webkit-media-controls-start-playback-button { display: none !important; opacity: 0 !important; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(17,17,16,.15) 0%, rgba(17,17,16,0) 35%, rgba(17,17,16,.5) 70%, rgba(17,17,16,.93) 100%); z-index: 1; }
 .hero-content { position: relative; z-index: 2; padding: 0 clamp(24px,6vw,80px) clamp(60px,8vh,100px); max-width: 900px; }
 .hero-eyebrow { font-size: .68rem; letter-spacing: .38em; text-transform: uppercase; color: var(--rust-light); margin-bottom: 18px; opacity: 0; transform: translateY(20px); animation: fadeUp .8s var(--ease-out) 2.2s forwards; }
@@ -427,7 +435,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="home">
   <div class="hero-video-wrap">
-    <video autoplay loop playsinline preload="auto" id="heroVid">
+    <video autoplay loop playsinline preload="auto" id="heroVid" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" x-webkit-airplay="deny">
       <source src="hero-video.mp4" type="video/mp4">
     </video>
   </div>
@@ -931,35 +939,26 @@ function toggleVid() {
 
 // ── HERO VIDEO — sound on first loop, silent after ──
 const heroVid = document.getElementById('heroVid');
+heroVid.removeAttribute('controls');
 heroVid.volume = 1;
 heroVid.muted = false;
 
-// Try playing with sound; browsers may block unmuted autoplay
 const playPromise = heroVid.play();
 if (playPromise !== undefined) {
   playPromise.catch(() => {
-    // Autoplay with sound blocked — fall back to muted autoplay (standard browser policy)
+    // Autoplay with sound blocked — fall back to muted (never show controls)
     heroVid.muted = true;
     heroVid.play().catch(() => {});
   });
 }
 
-// After first full loop ends — mute permanently
+// After first full loop — mute permanently, keep looping
 let loopCount = 0;
-heroVid.addEventListener('ended', () => {
-  loopCount++;
-  if (loopCount >= 1) {
-    heroVid.muted = true;
-  }
-});
-// 'ended' only fires when loop=false; for looping videos use timeupdate trick
 heroVid.removeAttribute('loop');
-heroVid.addEventListener('ended', function onEnd() {
+heroVid.addEventListener('ended', function() {
   loopCount++;
-  if (loopCount >= 1) {
-    heroVid.muted = true;
-  }
-  heroVid.play(); // keep looping manually
+  if (loopCount >= 1) heroVid.muted = true;
+  heroVid.play();
 });
 
 // ── MODAL ──
