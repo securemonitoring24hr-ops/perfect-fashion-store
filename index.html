@@ -144,7 +144,7 @@ nav.scrolled { background: rgba(17,17,16,.93); backdrop-filter: blur(20px); -web
 
 /* ===== NEW ARRIVALS ===== */
 .new-arrivals { padding: clamp(80px,10vh,120px) clamp(20px,5vw,80px); background: var(--off-black); }
-.prod-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.prod-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
 .prod-card { cursor: pointer; }
 .prod-img-wrap { position: relative; overflow: hidden; aspect-ratio: 3/4; background: var(--charcoal); margin-bottom: 14px; }
 .prod-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: all .7s var(--ease-out); display: block; }
@@ -286,6 +286,28 @@ video::-webkit-media-controls-overlay-enclosure { display: none !important; }
 
 /* ===== NEWSLETTER ===== */
 .newsletter { background: var(--rust); padding: clamp(60px,8vh,100px) clamp(20px,5vw,80px); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+/* ── CONTACT / VISIT STORE ── */
+.visit { background: var(--rust); padding: clamp(64px,9vh,110px) clamp(20px,5vw,80px); display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.visit-left .s-label { color: rgba(245,240,232,.72); }
+.visit-title { font-family: var(--font-display); font-size: clamp(2.2rem,5vw,3.8rem); font-weight: 300; line-height: 1.05; color: var(--cream); margin-bottom: 20px; }
+.visit-title em { font-style: italic; color: rgba(245,240,232,.75); }
+.visit-addr { font-size: .92rem; line-height: 1.8; color: rgba(245,240,232,.82); margin-bottom: 14px; display: flex; gap: 12px; align-items: flex-start; }
+.visit-addr .pin { font-size: 1.2rem; flex-shrink: 0; }
+.visit-owner { font-size: .85rem; color: rgba(245,240,232,.7); letter-spacing: .04em; margin-bottom: 32px; }
+.visit-actions { display: flex; flex-direction: column; gap: 14px; }
+.contact-btn { display: flex; align-items: center; gap: 14px; background: var(--cream); color: var(--charcoal); text-decoration: none; padding: 18px 24px; transition: all .3s var(--ease); }
+.contact-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(17,17,16,.25); }
+.contact-btn.wa:hover { background: #25D366; color: #fff; }
+.contact-btn.ig:hover { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff; }
+.cb-icon { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.3rem; }
+.contact-btn.wa .cb-icon { background: #25D366; color: #fff; }
+.contact-btn.ig .cb-icon { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff; }
+.contact-btn:hover .cb-icon { background: rgba(255,255,255,.25); }
+.cb-text { display: flex; flex-direction: column; gap: 2px; }
+.cb-label { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; opacity: .65; }
+.cb-value { font-size: 1.02rem; font-weight: 500; letter-spacing: .02em; }
+.visit-logo-wrap { display: flex; align-items: center; justify-content: center; }
+.visit-logo { max-width: 100%; width: 380px; border-radius: 8px; box-shadow: 0 20px 60px rgba(17,17,16,.4); }
 .nl-sub { font-size: .85rem; line-height: 1.7; color: rgba(245,240,232,.72); margin-top: 14px; }
 .nl-form { display: flex; flex-direction: column; gap: 14px; }
 .nl-row { display: flex; }
@@ -355,6 +377,8 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   .lookbook-row.rev { direction: ltr; }
   .stats { grid-template-columns: repeat(2,1fr); gap: 24px; }
   .newsletter { grid-template-columns: 1fr; gap: 36px; }
+  .visit { grid-template-columns: 1fr; gap: 40px; }
+  .visit-logo-wrap { order: -1; }
   .modal { grid-template-columns: 1fr; max-height: 88vh; overflow-y: auto; }
   .modal-img-wrap { aspect-ratio: 4/3; }
   .masonry { columns: 3; }
@@ -399,6 +423,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   <a href="#trending" onclick="closeNav()">Trending</a>
   <a href="#lookbook" onclick="closeNav()">Lookbook</a>
   <a href="#video" onclick="closeNav()">Campaign</a>
+  <a href="#contact" onclick="closeNav()">Visit Us</a>
 </div>
 
 <!-- QUICK VIEW MODAL -->
@@ -422,7 +447,8 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
           <button class="sz" onclick="pickSz(this)">XXL</button>
         </div>
       </div>
-      <a href="#" class="btn-rust" style="margin-top:6px">Add to Cart &rarr;</a>
+      <a id="mWhatsapp" href="#" target="_blank" rel="noopener" class="btn-rust" style="margin-top:6px">Enquire on WhatsApp &rarr;</a>
+      <a id="mInsta" href="https://instagram.com/perfect_dresses.bkd" target="_blank" rel="noopener" class="btn-ghost" style="margin-top:-8px">View on Instagram</a>
     </div>
   </div>
 </div>
@@ -436,10 +462,11 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     <li><a href="#trending">Trending</a></li>
     <li><a href="#lookbook">Lookbook</a></li>
     <li><a href="#video">Campaign</a></li>
+    <li><a href="#contact">Visit Us</a></li>
   </ul>
   <div class="nav-right">
-    <a href="#" class="nav-icon">Search</a>
-    <a href="#" class="nav-icon">Cart <span class="cart-count">3</span></a>
+    <a href="https://wa.me/919949042570" target="_blank" rel="noopener" class="nav-icon">WhatsApp</a>
+    <a href="https://instagram.com/perfect_dresses.bkd" target="_blank" rel="noopener" class="nav-icon">Instagram</a>
     <div class="hamburger" id="ham" onclick="toggleNav()">
       <span></span><span></span><span></span>
     </div>
@@ -459,8 +486,8 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     <h1 class="hero-title">Define<br>Your <em>Perfect</em><br>Look</h1>
     <p class="hero-sub">Premium streetwear crafted for those who move with intention. Bold pieces, refined details.</p>
     <div class="hero-ctas">
-      <a href="#featured" class="btn-rust">Shop Collection &rarr;</a>
-      <a href="#lookbook" class="btn-ghost">View Lookbook</a>
+      <a href="#featured" class="btn-rust">View Collection &rarr;</a>
+      <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store!" target="_blank" rel="noopener" class="btn-ghost">Enquire on WhatsApp</a>
     </div>
   </div>
 </section>
@@ -534,7 +561,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="s-label">Just Dropped</div>
       <h2 class="s-title">New <em>Arrivals</em></h2>
     </div>
-    <a href="#" class="view-all">Shop All</a>
+    <a href="#contact" class="view-all">Enquire</a>
   </div>
   <div class="prod-grid">
     <div class="prod-card reveal" onclick="openModal('polo-front.png','Tops','Rust Stripe Zip Polo','₹1,999','Statement oversized polo in warm rust. Half-zip silver placket, ribbed collar and cuffs. Boxy silhouette.')">
@@ -542,8 +569,8 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
         <img src="polo-side.png" alt="Polo Side">
         <img class="img-alt" src="polo-back.png" alt="Polo Back">
         <div class="prod-actions">
-          <button class="atc-btn" onclick="event.stopPropagation()">Add to Cart</button>
-          <button class="wish-btn" onclick="event.stopPropagation()">♡</button>
+          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Rust Stripe Zip Polo')">Enquire on WhatsApp</button>
+          <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
         </div>
       </div>
       <div class="prod-cat">Tops</div>
@@ -555,8 +582,8 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
         <img src="jeans-side.png" alt="Jeans Side">
         <img class="img-alt" src="jeans-back.png" alt="Jeans Back">
         <div class="prod-actions">
-          <button class="atc-btn" onclick="event.stopPropagation()">Add to Cart</button>
-          <button class="wish-btn" onclick="event.stopPropagation()">♡</button>
+          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Marble Wash Wide Jeans')">Enquire on WhatsApp</button>
+          <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
         </div>
       </div>
       <div class="prod-cat">Bottoms</div>
@@ -568,13 +595,26 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
         <img src="cargo-side.png" alt="Cargo Look">
         <img class="img-alt" src="wakanda-tee.png" alt="Wakanda Tee">
         <div class="prod-actions">
-          <button class="atc-btn" onclick="event.stopPropagation()">Add to Cart</button>
-          <button class="wish-btn" onclick="event.stopPropagation()">♡</button>
+          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Wakanda Forever Tee')">Enquire on WhatsApp</button>
+          <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
         </div>
       </div>
       <div class="prod-cat">Graphic Tees</div>
       <div class="prod-name">Wakanda Forever Tee</div>
       <div class="prod-price"><span class="sale">₹749</span><span class="was">₹899</span></div>
+    </div>
+    <div class="prod-card reveal d3" onclick="openModal('leopard-model-front.png','Shirts','Leopard Ikat Shirt','₹1,799','Premium cotton-linen shirt in an olive-green ikat brushstroke print. Bold LEOPARD chest graphic on front and signature flame logo on the back. Relaxed regular fit, full sleeves.')">
+      <div class="prod-img-wrap">
+        <img src="leopard-front-flat.png" alt="Leopard Shirt Front">
+        <img class="img-alt" src="leopard-back-flat.png" alt="Leopard Shirt Back">
+        <div class="prod-actions">
+          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Leopard Ikat Shirt')">Enquire on WhatsApp</button>
+          <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
+        </div>
+      </div>
+      <div class="prod-cat">Shirts</div>
+      <div class="prod-name">Leopard Ikat Shirt</div>
+      <div class="prod-price">₹1,799</div>
     </div>
   </div>
 </section>
@@ -608,7 +648,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
         <div class="vm-item"><span class="vm-icon">✦</span> Shot in Mumbai & Delhi</div>
       </div>
       <div class="reveal d3">
-        <a href="#featured" class="btn-rust">Shop the Drop &rarr;</a>
+        <a href="#featured" class="btn-rust">View the Collection &rarr;</a>
       </div>
     </div>
   </div>
@@ -635,7 +675,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="s-label reveal" style="color:var(--rust-light)">Drop 01 — Bottoms</div>
       <h2 class="s-title reveal d1">Texture.<br>Weight.<br><em>Statement.</em></h2>
       <p class="lb-text reveal d2">The Marble Wash Wide Jeans are not denim as you know it. Heavyweight canvas meets an all-over acid-wash marble treatment — every pair is uniquely distressed, no two exactly alike.</p>
-      <a href="#arrivals" class="btn-rust reveal d3">Shop Bottoms &rarr;</a>
+      <a href="#contact" class="btn-rust reveal d3">Enquire Now &rarr;</a>
     </div>
   </div>
 </section>
@@ -681,6 +721,14 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="car-item" onclick="openModal('polo-back.png','Tops','Rust Stripe Zip Polo','₹1,999','Boxy drop-shoulder silhouette, ribbed cuffs, bold horizontal stripe pattern.')">
         <img src="polo-back.png" alt="Polo Back">
         <div class="car-item-info"><div class="ci-cat">New In</div><div class="ci-name">Rust Stripe Polo</div><div class="ci-price">₹1,999</div></div>
+      </div>
+      <div class="car-item" onclick="openModal('leopard-model-front.png','Shirts','Leopard Ikat Shirt','₹1,799','Premium cotton-linen ikat shirt with bold LEOPARD graphics front and back.')">
+        <img src="leopard-model-front.png" alt="Leopard Shirt">
+        <div class="car-item-info"><div class="ci-cat">New In</div><div class="ci-name">Leopard Ikat Shirt</div><div class="ci-price">₹1,799</div></div>
+      </div>
+      <div class="car-item" onclick="openModal('leopard-model-back-v.png','Shirts','Leopard Ikat Shirt','₹1,799','Signature flame LEOPARD logo on the back. Olive ikat brushstroke print.')">
+        <img src="leopard-model-back-v.png" alt="Leopard Shirt Back">
+        <div class="car-item-info"><div class="ci-cat">Back Print</div><div class="ci-name">Leopard Flame Logo</div><div class="ci-price">₹1,799</div></div>
       </div>
     </div>
   </div>
@@ -778,24 +826,34 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     <div class="m-item reveal"><img src="cargo-side.png" alt="Gallery 4"><div class="m-hover"><span class="m-icon">+</span></div></div>
     <div class="m-item reveal d1"><img src="jeans-side.png" alt="Gallery 5"><div class="m-hover"><span class="m-icon">+</span></div></div>
     <div class="m-item reveal d2"><img src="polo-back.png" alt="Gallery 6"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal"><img src="polo-flat.png" alt="Gallery 7"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal d1"><img src="jeans-back.png" alt="Gallery 8"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal" onclick="openModal('leopard-model-front.png','Shirts','Leopard Ikat Shirt','₹1,799','Premium cotton-linen ikat shirt with bold LEOPARD graphics.')"><img src="leopard-model-front.png" alt="Leopard Front"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal d1" onclick="openModal('leopard-model-back-v.png','Shirts','Leopard Ikat Shirt','₹1,799','Signature flame LEOPARD logo on the back.')"><img src="leopard-model-back-v.png" alt="Leopard Back"><div class="m-hover"><span class="m-icon">+</span></div></div>
   </div>
 </section>
 
 <!-- ═══════════ NEWSLETTER ═══════════ -->
-<section class="newsletter" id="contact">
-  <div>
-    <div class="s-label reveal" style="color:rgba(245,240,232,.7)">Stay in the Loop</div>
-    <h2 class="s-title reveal d1" style="color:var(--cream)">Get <em style="color:rgba(245,240,232,.7)">First Access</em></h2>
-    <p class="nl-sub reveal d2">New drops. Exclusive offers. Members-only early access. Subscribe and never miss what's next.</p>
-  </div>
-  <div class="nl-form reveal d2">
-    <div class="nl-row">
-      <input class="nl-input" type="email" placeholder="Your email address">
-      <button class="nl-submit">Subscribe</button>
+<section class="visit" id="contact">
+  <div class="visit-left">
+    <div class="s-label reveal">Visit Our Store</div>
+    <h2 class="visit-title reveal d1">Come Say <em>Hello</em></h2>
+    <div class="visit-addr reveal d1">
+      <span class="pin">📍</span>
+      <span>Opp. Canara Bank, Weekly Bazar Road,<br>Bichkunda — 503 306, Telangana</span>
     </div>
-    <div class="nl-legal">By subscribing you agree to our Privacy Policy. Unsubscribe anytime.</div>
+    <div class="visit-owner reveal d1">Proprietor — Syed Khaled · Boys &amp; Mens Fashion</div>
+    <div class="visit-actions reveal d2">
+      <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store!%20I%20saw%20your%20website%20and%20wanted%20to%20enquire." target="_blank" rel="noopener" class="contact-btn wa">
+        <span class="cb-icon">✆</span>
+        <span class="cb-text"><span class="cb-label">WhatsApp / Call</span><span class="cb-value">+91 99490 42570</span></span>
+      </a>
+      <a href="https://instagram.com/perfect_dresses.bkd" target="_blank" rel="noopener" class="contact-btn ig">
+        <span class="cb-icon">⌾</span>
+        <span class="cb-text"><span class="cb-label">Follow on Instagram</span><span class="cb-value">@perfect_dresses.bkd</span></span>
+      </a>
+    </div>
+  </div>
+  <div class="visit-logo-wrap reveal d2">
+    <img class="visit-logo" src="logo.jpg" alt="Perfect Fashion Store">
   </div>
 </section>
 
@@ -804,62 +862,55 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   <div class="ft-top">
     <div>
       <a href="#" class="nav-logo"><em>P</em>erfect</a>
-      <p class="ft-tagline">Premium streetwear and lifestyle clothing for those who set the standard, not follow it.</p>
+      <p class="ft-tagline">Perfect Fashion Store — premium boys &amp; mens fashion in Bichkunda. Curated shirts, denim, and streetwear.</p>
       <div class="socials">
-        <a href="#" class="soc">IG</a>
-        <a href="#" class="soc">TW</a>
-        <a href="#" class="soc">YT</a>
-        <a href="#" class="soc">FB</a>
+        <a href="https://instagram.com/perfect_dresses.bkd" target="_blank" rel="noopener" class="soc">IG</a>
+        <a href="https://wa.me/919949042570" target="_blank" rel="noopener" class="soc">WA</a>
       </div>
     </div>
     <div class="ft-col">
-      <div class="ft-col-h">Shop</div>
+      <div class="ft-col-h">Collections</div>
       <ul>
-        <li><a href="#">New Arrivals</a></li>
-        <li><a href="#">Tops & Polos</a></li>
-        <li><a href="#">Bottoms & Denim</a></li>
-        <li><a href="#">Graphic Tees</a></li>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Sale</a></li>
+        <li><a href="#arrivals">New Arrivals</a></li>
+        <li><a href="#featured">Shirts</a></li>
+        <li><a href="#featured">Polos &amp; Tees</a></li>
+        <li><a href="#featured">Denim &amp; Bottoms</a></li>
+        <li><a href="#trending">Trending Now</a></li>
       </ul>
     </div>
     <div class="ft-col">
-      <div class="ft-col-h">Info</div>
+      <div class="ft-col-h">Visit Us</div>
       <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Lookbook</a></li>
-        <li><a href="#">Sustainability</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Press</a></li>
+        <li><a href="#contact">Opp. Canara Bank</a></li>
+        <li><a href="#contact">Weekly Bazar Road</a></li>
+        <li><a href="#contact">Bichkunda — 503 306</a></li>
+        <li><a href="#contact">Telangana, India</a></li>
       </ul>
     </div>
     <div class="ft-col">
-      <div class="ft-col-h">Help</div>
+      <div class="ft-col-h">Contact</div>
       <ul>
-        <li><a href="#">Size Guide</a></li>
-        <li><a href="#">Shipping Policy</a></li>
-        <li><a href="#">Returns & Exchange</a></li>
-        <li><a href="#">Track Order</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">FAQ</a></li>
+        <li><a href="https://wa.me/919949042570" target="_blank" rel="noopener">WhatsApp: 99490 42570</a></li>
+        <li><a href="tel:+919949042570">Call: +91 99490 42570</a></li>
+        <li><a href="https://instagram.com/perfect_dresses.bkd" target="_blank" rel="noopener">@perfect_dresses.bkd</a></li>
+        <li><a href="#contact">Syed Khaled (Owner)</a></li>
       </ul>
     </div>
   </div>
   <div class="ft-bot">
-    <div class="ft-copy">&copy; 2025 Perfect Fashion Store. All rights reserved. Designed with ✦ in India.</div>
+    <div class="ft-copy">&copy; 2025 Perfect Fashion Store, Bichkunda. All rights reserved.</div>
     <div class="payments">
       <span class="pay-tag">UPI</span>
-      <span class="pay-tag">Visa</span>
-      <span class="pay-tag">MC</span>
-      <span class="pay-tag">RuPay</span>
-      <span class="pay-tag">EMI</span>
+      <span class="pay-tag">Cash</span>
+      <span class="pay-tag">Cards</span>
+      <span class="pay-tag">In-Store</span>
     </div>
   </div>
 </footer>
 
 <!-- FLOAT CTA -->
 <div class="float-cta" id="floatCta">
-  <a href="#featured">Shop Now &rarr;</a>
+  <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store!%20I%20want%20to%20enquire%20about%20your%20collection." target="_blank" rel="noopener">✆ Chat on WhatsApp</a>
 </div>
 
 <script>
@@ -974,6 +1025,13 @@ heroVid.addEventListener('ended', function() {
   heroVid.play();
 });
 
+// ── WhatsApp helpers ──
+const WA_NUMBER = '919949042570';
+function waEnquire(productName) {
+  const msg = encodeURIComponent(`Hi Perfect Fashion Store! I'm interested in the "${productName}". Is it available?`);
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
+}
+
 // ── MODAL ──
 function openModal(img, cat, name, price, desc) {
   document.getElementById('mImg').src = img;
@@ -981,6 +1039,8 @@ function openModal(img, cat, name, price, desc) {
   document.getElementById('mName').textContent = name;
   document.getElementById('mPrice').textContent = price;
   document.getElementById('mDesc').textContent = desc;
+  const msg = encodeURIComponent(`Hi Perfect Fashion Store! I'm interested in the "${name}" (${price}). Is it available?`);
+  document.getElementById('mWhatsapp').href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
