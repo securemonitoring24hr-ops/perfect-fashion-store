@@ -31,8 +31,7 @@ jobs:
         run: |
           npx -y @netlify/mcp@latest \
             --site-id ${{ secrets.NETLIFY_SITE_ID }} \
-            --proxy-path "${{ secrets.NETLIFY_PROXY_URL }}" \
-            --no-wait
+            --proxy-path "${{ secrets.NETLIFY_PROXY_URL }}"
         timeout-minutes: 8
 
   # ── Deploy to GitHub Pages (backup) ──
