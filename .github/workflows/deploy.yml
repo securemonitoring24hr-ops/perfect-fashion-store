@@ -5,18 +5,37 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-# Allow GitHub Pages deployment
 permissions:
   contents: read
   pages: write
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "deploy"
   cancel-in-progress: false
 
 jobs:
-  # Deploy to GitHub Pages (always works, no token needed)
+  # ── Deploy to Netlify (primary) ──
+  deploy-netlify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Deploy to Netlify via MCP proxy
+        run: |
+          npx -y @netlify/mcp@latest \
+            --site-id ${{ secrets.NETLIFY_SITE_ID }} \
+            --proxy-path "${{ secrets.NETLIFY_PROXY_URL }}" \
+            --no-wait
+        timeout-minutes: 8
+
+  # ── Deploy to GitHub Pages (backup) ──
   deploy-github-pages:
     runs-on: ubuntu-latest
     environment:
@@ -25,35 +44,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
-      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  # Deploy to Netlify (requires NETLIFY_AUTH_TOKEN secret)
-  deploy-netlify:
-    runs-on: ubuntu-latest
-    if: ${{ secrets.NETLIFY_AUTH_TOKEN != '' }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v3.0
-        with:
-          publish-dir: '.'
-          production-deploy: true
-          deploy-message: "Deploy from GitHub — Perfect Fashion Store"
-          enable-pull-request-comment: false
-          enable-commit-comment: false
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: 44c010ee-cbcf-4b96-8d6b-8e561985b744
