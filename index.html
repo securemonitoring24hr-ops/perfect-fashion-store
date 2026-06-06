@@ -168,6 +168,23 @@ nav.scrolled { background: rgba(17,17,16,.93); backdrop-filter: blur(20px); -web
 .vid-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 32px; align-items: center; }
 .vid-player { position: relative; overflow: hidden; aspect-ratio: 16/9; background: var(--off-black); cursor: pointer; }
 .vid-player video { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Kill native controls on ALL videos site-wide */
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure,
+video::-webkit-media-controls-panel,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-overlay-play-button,
+video::-webkit-media-controls-timeline,
+video::-webkit-media-controls-current-time-display,
+video::-webkit-media-controls-time-remaining-display,
+video::-webkit-media-controls-mute-button,
+video::-webkit-media-controls-volume-slider,
+video::-webkit-media-controls-fullscreen-button,
+video::-webkit-media-controls-toggle-closed-captions-button,
+video::-internal-media-controls-download-button,
+video::-internal-media-controls-overflow-button { display: none !important; opacity: 0 !important; -webkit-appearance: none !important; pointer-events: none !important; }
+video::-webkit-media-controls-overlay-enclosure { display: none !important; }
 .vid-overlay { position: absolute; inset: 0; background: rgba(17,17,16,.28); display: flex; align-items: center; justify-content: center; transition: background .3s; }
 .vid-player:hover .vid-overlay { background: rgba(17,17,16,.1); }
 .vid-overlay.hidden { opacity: 0; pointer-events: none; }
@@ -432,7 +449,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="home">
   <div class="hero-video-wrap">
-    <video autoplay loop playsinline preload="auto" id="heroVid" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" x-webkit-airplay="deny">
+    <video autoplay loop playsinline preload="auto" id="heroVid" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback noplaybackrate" x-webkit-airplay="deny">
       <source src="hero-video.mp4" type="video/mp4">
     </video>
   </div>
@@ -572,7 +589,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   </div>
   <div class="vid-grid">
     <div class="vid-player reveal" id="vidPlayer" onclick="toggleVid()">
-      <video id="showVid" loop preload="metadata" playsinline>
+      <video id="showVid" loop preload="metadata" playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback noplaybackrate" x-webkit-airplay="deny">
         <source src="hero-video.mp4" type="video/mp4">
       </video>
       <div class="vid-overlay" id="vidOverlay">
@@ -918,7 +935,10 @@ tTrack.addEventListener('touchend', e => { const d = tTrack._tx - e.changedTouch
 const showVid = document.getElementById('showVid');
 const vidOverlay = document.getElementById('vidOverlay');
 const playIco = document.getElementById('playIco');
+showVid.controls = false;
+showVid.removeAttribute('controls');
 function toggleVid() {
+  showVid.controls = false;
   if (showVid.paused) {
     showVid.play();
     playIco.textContent = '⏸';
