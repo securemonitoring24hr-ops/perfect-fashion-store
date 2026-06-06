@@ -33,11 +33,12 @@ body { background: var(--off-black); color: var(--cream); font-family: var(--fon
 @media (hover: none) { .cursor, .cursor-ring { display: none; } body { cursor: auto; } }
 
 /* ===== LOADER ===== */
-#loader { position: fixed; inset: 0; background: var(--off-black); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px; transition: opacity .7s ease, visibility .7s ease; }
+#loader { position: fixed; inset: 0; background: var(--off-black); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; transition: opacity .7s ease, visibility .7s ease; }
 #loader.out { opacity: 0; visibility: hidden; }
 .loader-logo { font-family: var(--font-display); font-size: clamp(2.5rem,8vw,5rem); font-weight: 300; letter-spacing: .35em; color: var(--cream); display: flex; overflow: hidden; }
 .loader-logo span { display: inline-block; animation: slideUp .8s var(--ease-out) both; }
 .loader-logo span:nth-child(1){animation-delay:.05s} .loader-logo span:nth-child(2){animation-delay:.12s} .loader-logo span:nth-child(3){animation-delay:.19s} .loader-logo span:nth-child(4){animation-delay:.26s} .loader-logo span:nth-child(5){animation-delay:.33s} .loader-logo span:nth-child(6){animation-delay:.40s} .loader-logo span:nth-child(7){animation-delay:.47s}
+.loader-sub { font-family: var(--font-sans); font-size: clamp(.55rem,.9vw,.72rem); letter-spacing: .55em; text-transform: uppercase; color: rgba(245,240,232,.45); font-weight: 300; opacity: 0; animation: fadeIn .8s var(--ease-out) .8s forwards; margin-bottom: 28px; }
 .loader-bar { width: 180px; height: 1px; background: rgba(245,240,232,.12); overflow: hidden; }
 .loader-fill { height: 100%; background: var(--rust); animation: fill 1.9s var(--ease-out) .4s forwards; width: 0; }
 @keyframes fill { to { width: 100%; } }
@@ -365,6 +366,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   <div class="loader-logo">
     <span>P</span><span>E</span><span>R</span><span>F</span><span>E</span><span>C</span><span>T</span>
   </div>
+  <div class="loader-sub">Fashion Store</div>
   <div class="loader-bar"><div class="loader-fill"></div></div>
 </div>
 
@@ -425,7 +427,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="home">
   <div class="hero-video-wrap">
-    <video autoplay muted loop playsinline preload="auto" id="heroVid">
+    <video autoplay loop playsinline preload="auto" id="heroVid">
       <source src="hero-video.mp4" type="video/mp4">
     </video>
   </div>
@@ -927,11 +929,37 @@ function toggleVid() {
   }
 }
 
-// ── HERO VIDEO fallback ──
+// ── HERO VIDEO — sound on first loop, silent after ──
 const heroVid = document.getElementById('heroVid');
-heroVid.play().catch(() => {
-  // Autoplay blocked — add click to play overlay
-  heroVid.setAttribute('controls', '');
+heroVid.volume = 1;
+heroVid.muted = false;
+
+// Try playing with sound; browsers may block unmuted autoplay
+const playPromise = heroVid.play();
+if (playPromise !== undefined) {
+  playPromise.catch(() => {
+    // Autoplay with sound blocked — fall back to muted autoplay (standard browser policy)
+    heroVid.muted = true;
+    heroVid.play().catch(() => {});
+  });
+}
+
+// After first full loop ends — mute permanently
+let loopCount = 0;
+heroVid.addEventListener('ended', () => {
+  loopCount++;
+  if (loopCount >= 1) {
+    heroVid.muted = true;
+  }
+});
+// 'ended' only fires when loop=false; for looping videos use timeupdate trick
+heroVid.removeAttribute('loop');
+heroVid.addEventListener('ended', function onEnd() {
+  loopCount++;
+  if (loopCount >= 1) {
+    heroVid.muted = true;
+  }
+  heroVid.play(); // keep looping manually
 });
 
 // ── MODAL ──
