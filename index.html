@@ -515,40 +515,40 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="s-label">Featured Collection</div>
       <h2 class="s-title">This Week's <em>Picks</em></h2>
     </div>
-    <a href="#" class="view-all">View All</a>
+    <a href="#arrivals" class="view-all">View All</a>
   </div>
   <div class="feat-grid">
-    <div class="feat-card reveal" onclick="openModal('polo-front.png','Shirts','Satin Cotton Checks','₹549','Premium satin-finish cotton checked shirt with a soft sheen and breathable feel. Smart-casual styling for everyday wear. Available in M, L, XL. Free home delivery.')">
+    <div class="feat-card reveal" onclick="openModal('adv-maroon-blue.jpg','Combo Sets','Adventure Cargo Shirt + Tee','₹699','R2O double-pocket cargo shirt paired with a Great Adventure graphic tee — a complete ready-to-wear combo. Shirt colours: maroon, black, brown, sky-blue, lavender. Available in M, L, XL. Free home delivery.')">
+      <span class="feat-badge">Combo</span>
+      <button class="qv-btn" onclick="event.stopPropagation();openModal('adv-maroon-blue.jpg','Combo Sets','Adventure Cargo Shirt + Tee','₹699','R2O double-pocket cargo shirt with a Great Adventure graphic tee. Multiple colours. Available M, L, XL. Free home delivery.')">Quick View</button>
+      <img src="adv-maroon-blue.jpg" alt="Adventure Cargo Shirt and Tee Combo">
+      <div class="feat-card-glass"></div>
+      <div class="feat-card-info">
+        <div class="fc-cat">Combo Sets</div>
+        <div class="fc-name">Adventure Cargo Shirt + Tee</div>
+        <div class="fc-price">₹699 · Free Delivery</div>
+      </div>
+    </div>
+    <div class="feat-card reveal d1" onclick="openModal('leopard-check-trio.jpg','Shirts','Leopard Checks Shirt','₹599','LEOPARD windowpane checked shirt with signature back print, available in wine, cream and black. Lightweight and breathable. Available in M, L, XL. Free home delivery.')">
       <span class="feat-badge">New</span>
-      <button class="qv-btn" onclick="event.stopPropagation();openModal('polo-front.png','Shirts','Satin Cotton Checks','₹549','Premium satin-finish cotton checked shirt with a soft sheen and breathable feel. Available in M, L, XL. Free home delivery.')">Quick View</button>
-      <img src="polo-flat.png" alt="Satin Cotton Checks">
+      <button class="qv-btn" onclick="event.stopPropagation();openModal('leopard-check-trio.jpg','Shirts','Leopard Checks Shirt','₹599','LEOPARD windowpane checked shirt with back print. Wine, cream, black. Available M, L, XL. Free home delivery.')">Quick View</button>
+      <img src="leopard-check-trio.jpg" alt="Leopard Checks Shirt">
       <div class="feat-card-glass"></div>
       <div class="feat-card-info">
         <div class="fc-cat">Shirts</div>
-        <div class="fc-name">Satin Cotton Checks</div>
-        <div class="fc-price">₹549 · Free Delivery</div>
+        <div class="fc-name">Leopard Checks Shirt</div>
+        <div class="fc-price">₹599 · Free Delivery</div>
       </div>
     </div>
-    <div class="feat-card reveal d1" onclick="openModal('jeans-front.png','Shirts','Knitted Denim Shirt','₹649','Soft knitted denim shirt with a relaxed, stretchable fit and a premium washed finish. A versatile wardrobe staple. Available in M, L, XL. Free home delivery.')">
-      <span class="feat-badge">Trending</span>
-      <button class="qv-btn" onclick="event.stopPropagation();openModal('jeans-front.png','Shirts','Knitted Denim Shirt','₹649','Soft knitted denim shirt with a relaxed fit and premium washed finish. Available in M, L, XL. Free home delivery.')">Quick View</button>
-      <img src="jeans-flat.png" alt="Knitted Denim Shirt">
+    <div class="feat-card reveal d2" onclick="openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped Shirt','₹599','Premium Right Colours full-sleeve striped shirt in classic black or grey. Soft cotton blend with a smart vertical stripe. Available in M, L, XL. Free home delivery.')">
+      <span class="feat-badge" style="background:var(--charcoal)">Trending</span>
+      <button class="qv-btn" onclick="event.stopPropagation();openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped Shirt','₹599','Right Colours striped shirt in black or grey. Soft cotton blend. Available M, L, XL. Free home delivery.')">Quick View</button>
+      <img src="rc-stripe-pair.jpg" alt="Right Colours Striped Shirt">
       <div class="feat-card-glass"></div>
       <div class="feat-card-info">
         <div class="fc-cat">Shirts</div>
-        <div class="fc-name">Knitted Denim Shirt</div>
-        <div class="fc-price">₹649 · Free Delivery</div>
-      </div>
-    </div>
-    <div class="feat-card reveal d2" onclick="openModal('wakanda-tee.png','Graphic Tees','Wakanda Graphic Tee','₹499','Oversized heavyweight cotton tee with a bold front graphic print. Soft, durable and street-ready. Available in S, M, L, XL. Free home delivery.')">
-      <span class="feat-badge" style="background:var(--charcoal)">Limited</span>
-      <button class="qv-btn" onclick="event.stopPropagation();openModal('wakanda-tee.png','Graphic Tees','Wakanda Graphic Tee','₹499','Oversized heavyweight cotton tee with a bold front graphic print. Available in S, M, L, XL. Free home delivery.')">Quick View</button>
-      <img src="wakanda-tee.png" alt="Wakanda Graphic Tee">
-      <div class="feat-card-glass"></div>
-      <div class="feat-card-info">
-        <div class="fc-cat">Graphic Tees</div>
-        <div class="fc-name">Wakanda Graphic Tee</div>
-        <div class="fc-price">₹499 · Free Delivery</div>
+        <div class="fc-name">Right Colours Striped Shirt</div>
+        <div class="fc-price">₹599 · Free Delivery</div>
       </div>
     </div>
   </div>
@@ -558,55 +558,68 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 <section class="new-arrivals" id="arrivals">
   <div class="s-header reveal">
     <div>
-      <div class="s-label">New Arrivals</div>
-      <h2 class="s-title">New <em>Arrivals</em></h2>
+      <div class="s-label">Shop the Collection</div>
+      <h2 class="s-title">In Store <em>Now</em></h2>
     </div>
     <a href="#contact" class="view-all">Enquire</a>
   </div>
   <div class="prod-grid">
-    <div class="prod-card reveal" onclick="openModal('polo-front.png','Shirts','Satin Cotton Checks','₹549','Premium satin-finish cotton checked shirt with a soft sheen. Available in M, L, XL. Free home delivery.')">
+    <div class="prod-card reveal " onclick="openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped Shirt','₹599','Premium Right Colours full-sleeve striped shirt in classic black or grey. Soft cotton blend with a smart vertical stripe. Available in M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="polo-side.png" alt="Polo Side">
-        <img class="img-alt" src="polo-back.png" alt="Polo Back">
+        <img src="rc-stripe-pair.jpg" alt="Right Colours Striped Shirt">
+        <img class="img-alt" src="rc-stripe-pair.jpg" alt="Right Colours Striped Shirt alt">
         <div class="prod-actions">
-          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Satin Cotton Checks - ₹549')">Enquire on WhatsApp</button>
+          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Right Colours Striped Shirt - ₹599')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
         </div>
       </div>
       <div class="prod-cat">Shirts · M L XL</div>
-      <div class="prod-name">Satin Cotton Checks</div>
-      <div class="prod-price"><span class="sale">₹549</span> · Free Delivery</div>
+      <div class="prod-name">Right Colours Striped Shirt</div>
+      <div class="prod-price"><span class="sale">₹599</span> · Free Delivery</div>
     </div>
-    <div class="prod-card reveal d1" onclick="openModal('jeans-front.png','Shirts','Knitted Denim Shirt','₹649','Soft knitted denim shirt with a relaxed, stretchable fit and premium washed finish. Available in M, L, XL. Free home delivery.')">
+    <div class="prod-card reveal d1" onclick="openModal('rc-checks-pair.jpg','Shirts','Right Colours Checks Shirt','₹599','Right Colours full-sleeve checked shirt in charcoal or beige plaid. Crisp cotton finish, perfect for casual and semi-formal looks. Available in M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="jeans-side.png" alt="Jeans Side">
-        <img class="img-alt" src="jeans-back.png" alt="Jeans Back">
+        <img src="rc-checks-pair.jpg" alt="Right Colours Checks Shirt">
+        <img class="img-alt" src="rc-checks-pair.jpg" alt="Right Colours Checks Shirt alt">
         <div class="prod-actions">
-          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Knitted Denim Shirt - ₹649')">Enquire on WhatsApp</button>
+          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Right Colours Checks Shirt - ₹599')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
         </div>
       </div>
       <div class="prod-cat">Shirts · M L XL</div>
-      <div class="prod-name">Knitted Denim Shirt</div>
-      <div class="prod-price"><span class="sale">₹649</span> · Free Delivery</div>
+      <div class="prod-name">Right Colours Checks Shirt</div>
+      <div class="prod-price"><span class="sale">₹599</span> · Free Delivery</div>
     </div>
-    <div class="prod-card reveal d2" onclick="openModal('wakanda-tee.png','Graphic Tees','Wakanda Graphic Tee','₹499','Oversized heavyweight cotton tee with a bold front graphic. Available in S, M, L, XL. Free home delivery.')">
+    <div class="prod-card reveal d2" onclick="openModal('leopard-check-trio.jpg','Shirts','Leopard Checks Shirt','₹599','LEOPARD windowpane checked shirt with signature back print, available in wine, cream and black. Lightweight and breathable. Available in M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="cargo-side.png" alt="Cargo Look">
-        <img class="img-alt" src="wakanda-tee.png" alt="Wakanda Tee">
+        <img src="leopard-check-trio.jpg" alt="Leopard Checks Shirt">
+        <img class="img-alt" src="leopard-check-trio2.jpg" alt="Leopard Checks Shirt alt">
         <div class="prod-actions">
-          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Wakanda Graphic Tee - ₹499')">Enquire on WhatsApp</button>
+          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Leopard Checks Shirt - ₹599')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
         </div>
       </div>
-      <div class="prod-cat">Graphic Tees · S M L XL</div>
-      <div class="prod-name">Wakanda Graphic Tee</div>
-      <div class="prod-price"><span class="sale">₹499</span> · Free Delivery</div>
+      <div class="prod-cat">Shirts · M L XL</div>
+      <div class="prod-name">Leopard Checks Shirt</div>
+      <div class="prod-price"><span class="sale">₹599</span> · Free Delivery</div>
     </div>
-    <div class="prod-card reveal d3" onclick="openModal('leopard-model-front.png','Shirts','Cotton Printed Shirt','₹450','Pure cotton printed shirt with an olive-green ikat brushstroke pattern and bold LEOPARD graphic front and back. Lightweight and breathable. Available in S, M, L. Free home delivery.')">
+    <div class="prod-card reveal d3" onclick="openModal('adv-maroon-blue.jpg','Combo Sets','Adventure Cargo Shirt + Tee','₹699','R2O double-pocket cargo shirt paired with a "Great Adventure" graphic tee. A complete ready-to-wear combo. Shirt colours: maroon, black, brown, sky-blue, lavender. Available in M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="leopard-front-flat.png" alt="Leopard Shirt Front">
-        <img class="img-alt" src="leopard-back-flat.png" alt="Leopard Shirt Back">
+        <img src="adv-maroon-blue.jpg" alt="Adventure Cargo Shirt + Tee">
+        <img class="img-alt" src="adv-maroon-blue2.jpg" alt="Adventure Cargo Shirt + Tee alt">
+        <div class="prod-actions">
+          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Adventure Cargo Shirt + Tee - ₹699')">Enquire on WhatsApp</button>
+          <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
+        </div>
+      </div>
+      <div class="prod-cat">Combo Sets · M L XL</div>
+      <div class="prod-name">Adventure Cargo Shirt + Tee</div>
+      <div class="prod-price"><span class="sale">₹699</span> · Free Delivery</div>
+    </div>
+    <div class="prod-card reveal " onclick="openModal('leopard-front-flat.png','Shirts','Cotton Printed Shirt','₹450','Pure cotton printed shirt with olive ikat brushstroke pattern and bold LEOPARD graphic front and back. Lightweight and breathable. Available in S, M, L. Free home delivery.')">
+      <div class="prod-img-wrap">
+        <img src="leopard-front-flat.png" alt="Cotton Printed Shirt">
+        <img class="img-alt" src="leopard-back-flat.png" alt="Cotton Printed Shirt alt">
         <div class="prod-actions">
           <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Cotton Printed Shirt - ₹450')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
@@ -616,6 +629,48 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="prod-name">Cotton Printed Shirt</div>
       <div class="prod-price"><span class="sale">₹450</span> · Free Delivery</div>
     </div>
+    <div class="prod-card reveal d1" onclick="openModal('polo-front.png','Shirts','Satin Cotton Checks','₹549','Premium satin-finish cotton checked shirt with a soft sheen and breathable feel. Smart-casual styling for everyday wear. Available in M, L, XL. Free home delivery.')">
+      <div class="prod-img-wrap">
+        <img src="polo-front.png" alt="Satin Cotton Checks">
+        <img class="img-alt" src="polo-back.png" alt="Satin Cotton Checks alt">
+        <div class="prod-actions">
+          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Satin Cotton Checks - ₹549')">Enquire on WhatsApp</button>
+          <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
+        </div>
+      </div>
+      <div class="prod-cat">Shirts · M L XL</div>
+      <div class="prod-name">Satin Cotton Checks</div>
+      <div class="prod-price"><span class="sale">₹549</span> · Free Delivery</div>
+    </div>
+    <div class="prod-card reveal d2" onclick="openModal('jeans-front.png','Shirts','Knitted Denim Shirt','₹649','Soft knitted denim shirt with a relaxed, stretchable fit and premium washed finish. A versatile wardrobe staple. Available in M, L, XL. Free home delivery.')">
+      <div class="prod-img-wrap">
+        <img src="jeans-front.png" alt="Knitted Denim Shirt">
+        <img class="img-alt" src="jeans-back.png" alt="Knitted Denim Shirt alt">
+        <div class="prod-actions">
+          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Knitted Denim Shirt - ₹649')">Enquire on WhatsApp</button>
+          <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
+        </div>
+      </div>
+      <div class="prod-cat">Shirts · M L XL</div>
+      <div class="prod-name">Knitted Denim Shirt</div>
+      <div class="prod-price"><span class="sale">₹649</span> · Free Delivery</div>
+    </div>
+    <div class="prod-card reveal d3" onclick="openModal('wakanda-tee.png','Graphic Tees','Wakanda Graphic Tee','₹499','Oversized heavyweight cotton tee with a bold front graphic print. Soft, durable and street-ready. Available in S, M, L, XL. Free home delivery.')">
+      <div class="prod-img-wrap">
+        <img src="wakanda-tee.png" alt="Wakanda Graphic Tee">
+        <img class="img-alt" src="cargo-side.png" alt="Wakanda Graphic Tee alt">
+        <div class="prod-actions">
+          <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Wakanda Graphic Tee - ₹499')">Enquire on WhatsApp</button>
+          <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
+        </div>
+      </div>
+      <div class="prod-cat">Graphic Tees · S M L XL</div>
+      <div class="prod-name">Wakanda Graphic Tee</div>
+      <div class="prod-price"><span class="sale">₹499</span> · Free Delivery</div>
+    </div>
+  </div>
+  <div class="reveal" style="text-align:center;margin-top:48px">
+    <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store!%20I%20want%20to%20see%20your%20full%20collection." target="_blank" rel="noopener" class="btn-rust">See More on WhatsApp &rarr;</a>
   </div>
 </section>
 
@@ -658,7 +713,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 <section id="lookbook">
   <div class="lookbook-row">
     <div class="lb-visual reveal">
-      <img src="polo-front.png" alt="Rust Polo Lookbook">
+      <img src="adv-maroon-blue.jpg" alt="Adventure Combo Lookbook">
     </div>
     <div class="lb-copy light">
       <div class="s-label reveal">Our Story</div>
@@ -669,7 +724,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   </div>
   <div class="lookbook-row rev">
     <div class="lb-visual reveal">
-      <img src="jeans-front.png" alt="Marble Jeans Lookbook">
+      <img src="leopard-check-trio.jpg" alt="Leopard Checks Lookbook">
     </div>
     <div class="lb-copy dark">
       <div class="s-label reveal" style="color:var(--rust-light)">Why Perfect</div>
@@ -697,38 +752,38 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     </div>
   </div>
   <div class="car-wrap">
-    <div class="car-track" id="carTrack">
-      <div class="car-item" onclick="openModal('polo-front.png','Shirts','Satin Cotton Checks','₹549','Premium satin-finish cotton checked shirt. Available in M, L, XL. Free delivery.')">
-        <img src="polo-front.png" alt="Polo Front">
-        <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Satin Cotton Checks</div><div class="ci-price">₹549 · Free Delivery</div></div>
+        <div class="car-track" id="carTrack">
+      <div class="car-item" onclick="openModal('adv-black-pink.jpg','Combo Sets','Adventure Combo','₹699','Cargo shirt + graphic tee combo. Available M, L, XL. Free delivery.')">
+        <img src="adv-black-pink.jpg" alt="Adventure Combo">
+        <div class="car-item-info"><div class="ci-cat">Combo Sets</div><div class="ci-name">Adventure Combo</div><div class="ci-price">₹699 · Free Delivery</div></div>
       </div>
-      <div class="car-item" onclick="openModal('polo-side.png','Shirts','Satin Cotton Checks','₹549','Premium satin-finish cotton checked shirt — side profile. Available M, L, XL. Free delivery.')">
-        <img src="polo-side.png" alt="Polo Side">
-        <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Satin Cotton Checks</div><div class="ci-price">₹549 · Free Delivery</div></div>
+      <div class="car-item" onclick="openModal('leopard-bw.jpg','Shirts','Leopard Ikat Shirt','₹450','Cotton printed LEOPARD shirt, black & white. Available S, M, L. Free delivery.')">
+        <img src="leopard-bw.jpg" alt="Leopard Ikat Shirt">
+        <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Leopard Ikat Shirt</div><div class="ci-price">₹450 · Free Delivery</div></div>
       </div>
-      <div class="car-item" onclick="openModal('jeans-front.png','Shirts','Knitted Denim Shirt','₹649','Soft knitted denim shirt, relaxed fit. Available M, L, XL. Free delivery.')">
-        <img src="jeans-front.png" alt="Jeans Front">
-        <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Knitted Denim Shirt</div><div class="ci-price">₹649 · Free Delivery</div></div>
+      <div class="car-item" onclick="openModal('rc-checks-pair.jpg','Shirts','Right Colours Checks','₹599','Charcoal & beige plaid shirts. Available M, L, XL. Free delivery.')">
+        <img src="rc-checks-pair.jpg" alt="Right Colours Checks">
+        <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Right Colours Checks</div><div class="ci-price">₹599 · Free Delivery</div></div>
       </div>
-      <div class="car-item" onclick="openModal('cargo-side.png','Graphic Tees','Wakanda Graphic Tee','₹499','Oversized graphic tee styled with cargo trousers. Tee available S–XL. Free delivery.')">
-        <img src="cargo-side.png" alt="Cargo Look">
-        <div class="car-item-info"><div class="ci-cat">Graphic Tees</div><div class="ci-name">Wakanda Graphic Tee</div><div class="ci-price">₹499 · Free Delivery</div></div>
+      <div class="car-item" onclick="openModal('adv-brown-blue.jpg','Combo Sets','Adventure Combo','₹699','Brown cargo shirt + adventure tee. Available M, L, XL. Free delivery.')">
+        <img src="adv-brown-blue.jpg" alt="Adventure Combo">
+        <div class="car-item-info"><div class="ci-cat">Combo Sets</div><div class="ci-name">Adventure Combo</div><div class="ci-price">₹699 · Free Delivery</div></div>
       </div>
-      <div class="car-item" onclick="openModal('jeans-side.png','Shirts','Knitted Denim Shirt','₹649','Knitted denim shirt — side profile. Available M, L, XL. Free delivery.')">
-        <img src="jeans-side.png" alt="Jeans Side">
-        <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Knitted Denim Shirt</div><div class="ci-price">₹649 · Free Delivery</div></div>
+      <div class="car-item" onclick="openModal('leopard-check-trio.jpg','Shirts','Leopard Checks','₹599','Windowpane check shirt, 3 colours. Available M, L, XL. Free delivery.')">
+        <img src="leopard-check-trio.jpg" alt="Leopard Checks">
+        <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Leopard Checks</div><div class="ci-price">₹599 · Free Delivery</div></div>
       </div>
-      <div class="car-item" onclick="openModal('polo-back.png','Shirts','Satin Cotton Checks','₹549','Satin cotton checked shirt — back view. Available M, L, XL. Free delivery.')">
-        <img src="polo-back.png" alt="Polo Back">
-        <div class="car-item-info"><div class="ci-cat">New In</div><div class="ci-name">Satin Cotton Checks</div><div class="ci-price">₹549 · Free Delivery</div></div>
+      <div class="car-item" onclick="openModal('adv-skyblue.jpg','Combo Sets','Adventure Combo','₹699','Sky-blue cargo shirt + tee. Available M, L, XL. Free delivery.')">
+        <img src="adv-skyblue.jpg" alt="Adventure Combo">
+        <div class="car-item-info"><div class="ci-cat">Combo Sets</div><div class="ci-name">Adventure Combo</div><div class="ci-price">₹699 · Free Delivery</div></div>
       </div>
-      <div class="car-item" onclick="openModal('leopard-model-front.png','Shirts','Cotton Printed Shirt','₹450','Pure cotton printed ikat shirt with bold LEOPARD graphics. Available S, M, L. Free delivery.')">
-        <img src="leopard-model-front.png" alt="Leopard Shirt">
-        <div class="car-item-info"><div class="ci-cat">New In</div><div class="ci-name">Cotton Printed Shirt</div><div class="ci-price">₹450 · Free Delivery</div></div>
+      <div class="car-item" onclick="openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped','₹599','Black & grey striped shirts. Available M, L, XL. Free delivery.')">
+        <img src="rc-stripe-pair.jpg" alt="Right Colours Striped">
+        <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Right Colours Striped</div><div class="ci-price">₹599 · Free Delivery</div></div>
       </div>
-      <div class="car-item" onclick="openModal('leopard-model-back-v.png','Shirts','Cotton Printed Shirt','₹450','Signature flame LEOPARD print on the back. Pure cotton. Available S, M, L. Free delivery.')">
-        <img src="leopard-model-back-v.png" alt="Leopard Shirt Back">
-        <div class="car-item-info"><div class="ci-cat">Back Print</div><div class="ci-name">Cotton Printed Shirt</div><div class="ci-price">₹450 · Free Delivery</div></div>
+      <div class="car-item" onclick="openModal('adv-lavender.jpg','Combo Sets','Adventure Combo','₹699','Lavender cargo shirt + tee. Available M, L, XL. Free delivery.')">
+        <img src="adv-lavender.jpg" alt="Adventure Combo">
+        <div class="car-item-info"><div class="ci-cat">Combo Sets</div><div class="ci-name">Adventure Combo</div><div class="ci-price">₹699 · Free Delivery</div></div>
       </div>
     </div>
   </div>
@@ -740,7 +795,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 
 <!-- PROMO BANNER -->
 <div class="promo">
-  <img src="jeans-front.png" alt="Promo">
+  <img src="adv-skyblue.jpg" alt="Promo">
   <div class="promo-veil"></div>
   <div class="promo-body">
     <div class="promo-eye reveal">On Every Order</div>
@@ -819,15 +874,15 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     <div><div class="s-label">The Feed</div><h2 class="s-title">Shot <em>Different</em></h2></div>
     <a href="#" class="view-all">@perfectfashionstore</a>
   </div>
-  <div class="masonry">
-    <div class="m-item reveal"><img src="polo-front.png" alt="Gallery 1"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal d1"><img src="jeans-front.png" alt="Gallery 2"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal d2"><img src="polo-side.png" alt="Gallery 3"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal"><img src="cargo-side.png" alt="Gallery 4"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal d1"><img src="jeans-side.png" alt="Gallery 5"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal d2"><img src="polo-back.png" alt="Gallery 6"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal" onclick="openModal('leopard-model-front.png','Shirts','Cotton Printed Shirt','₹450','Pure cotton printed ikat shirt with bold LEOPARD graphics. Available S, M, L. Free delivery.')"><img src="leopard-model-front.png" alt="Leopard Front"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal d1" onclick="openModal('leopard-model-back-v.png','Shirts','Cotton Printed Shirt','₹450','Signature flame LEOPARD print on the back. Available S, M, L. Free delivery.')"><img src="leopard-model-back-v.png" alt="Leopard Back"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="masonry">
+    <div class="m-item reveal " onclick="openModal('adv-maroon-blue.jpg','Combo Sets','Adventure Combo','₹699','Maroon cargo shirt + adventure tee combo. Available M, L, XL. Free delivery.')"><img src="adv-maroon-blue.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal d1" onclick="openModal('leopard-trio.jpg','Shirts','Leopard Ikat Shirt','₹450','Cotton printed LEOPARD shirt in 3 colours. Available S, M, L. Free delivery.')"><img src="leopard-trio.jpg" alt="Leopard Ikat Shirt"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal d2" onclick="openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped','₹599','Black & grey striped shirts. Available M, L, XL. Free delivery.')"><img src="rc-stripe-pair.jpg" alt="Right Colours Striped"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal " onclick="openModal('adv-skyblue.jpg','Combo Sets','Adventure Combo','₹699','Sky-blue cargo shirt + tee. Available M, L, XL. Free delivery.')"><img src="adv-skyblue.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal d1" onclick="openModal('leopard-check-trio.jpg','Shirts','Leopard Checks','₹599','Windowpane check shirt in 3 colours. Available M, L, XL. Free delivery.')"><img src="leopard-check-trio.jpg" alt="Leopard Checks"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal d2" onclick="openModal('adv-black-pink.jpg','Combo Sets','Adventure Combo','₹699','Black cargo shirt + pink adventure tee. Available M, L, XL. Free delivery.')"><img src="adv-black-pink.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal " onclick="openModal('rc-checks-pair.jpg','Shirts','Right Colours Checks','₹599','Charcoal & beige plaid shirts. Available M, L, XL. Free delivery.')"><img src="rc-checks-pair.jpg" alt="Right Colours Checks"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal d1" onclick="openModal('adv-lavender.jpg','Combo Sets','Adventure Combo','₹699','Lavender cargo shirt + tee. Available M, L, XL. Free delivery.')"><img src="adv-lavender.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
   </div>
 </section>
 
@@ -871,11 +926,11 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     <div class="ft-col">
       <div class="ft-col-h">Collections</div>
       <ul>
-        <li><a href="#arrivals">New Arrivals</a></li>
-        <li><a href="#featured">Shirts</a></li>
-        <li><a href="#featured">Polos &amp; Tees</a></li>
-        <li><a href="#featured">Denim &amp; Bottoms</a></li>
-        <li><a href="#trending">Trending Now</a></li>
+        <li><a href="#arrivals">All Shirts</a></li>
+        <li><a href="#featured">Combo Sets</a></li>
+        <li><a href="#arrivals">Printed Shirts</a></li>
+        <li><a href="#arrivals">Checks &amp; Stripes</a></li>
+        <li><a href="#arrivals">Graphic Tees</a></li>
       </ul>
     </div>
     <div class="ft-col">
@@ -899,7 +954,6 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   </div>
   <div class="ft-bot">
     <div class="ft-copy">&copy; 2025 Perfect Fashion Store, Bichkunda. All rights reserved.</div>
-    <div class="ft-copy">Boys &amp; Mens Fashion · Free Home Delivery</div>
   </div>
 </footer>
 
