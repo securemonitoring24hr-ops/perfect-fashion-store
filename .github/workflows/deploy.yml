@@ -1,24 +1,57 @@
-name: Deploy to Netlify
+name: Deploy Perfect Fashion Store
 
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
+# Allow GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  deploy:
+  # Deploy to GitHub Pages (always works, no token needed)
+  deploy-github-pages:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Deploy to Netlify (Production)
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # Deploy to Netlify (requires NETLIFY_AUTH_TOKEN secret)
+  deploy-netlify:
+    runs-on: ubuntu-latest
+    if: ${{ secrets.NETLIFY_AUTH_TOKEN != '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
           publish-dir: '.'
           production-deploy: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Production deploy — Perfect Fashion Store"
+          deploy-message: "Deploy from GitHub — Perfect Fashion Store"
           enable-pull-request-comment: false
           enable-commit-comment: false
         env:
