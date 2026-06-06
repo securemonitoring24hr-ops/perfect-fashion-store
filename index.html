@@ -89,9 +89,7 @@ nav.scrolled { background: rgba(17,17,16,.93); backdrop-filter: blur(20px); -web
 .hero-title em { font-style: italic; color: var(--rust-light); }
 .hero-sub { font-size: .85rem; letter-spacing: .06em; color: rgba(245,240,232,.6); max-width: 400px; line-height: 1.75; margin-bottom: 40px; opacity: 0; transform: translateY(20px); animation: fadeUp .8s var(--ease-out) 2.6s forwards; }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; opacity: 0; transform: translateY(20px); animation: fadeUp .8s var(--ease-out) 2.8s forwards; }
-.hero-scroll { position: absolute; bottom: 28px; right: 40px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; animation: fadeIn 1s 3.2s forwards; }
-.scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, transparent, var(--rust)); animation: scrollPulse 2s infinite; }
-.scroll-text { font-size: .58rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(245,240,232,.45); writing-mode: vertical-rl; }
+
 @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { to { opacity: 1; } }
 @keyframes scrollPulse { 0%,100%{ opacity:.4; } 50%{ opacity:1; } }
@@ -357,7 +355,6 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   .masonry { columns: 2; }
   .car-item { flex: 0 0 82%; }
   .testi-card { flex: 0 0 88%; }
-  .hero-scroll { display: none; }
   .float-cta { bottom: 18px; right: 18px; }
   .nl-row { flex-direction: column; }
   .nl-input { border-right: 1px solid rgba(245,240,232,.22); }
@@ -448,10 +445,6 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <a href="#featured" class="btn-rust">Shop Collection &rarr;</a>
       <a href="#lookbook" class="btn-ghost">View Lookbook</a>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <div class="scroll-text">Scroll</div>
   </div>
 </section>
 
