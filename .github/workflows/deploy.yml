@@ -11,18 +11,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v3.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          publish-dir: '.'
-          production-branch: main
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions"
-          enable-pull-request-comment: false
-          enable-commit-comment: false
-          overwrites-pull-request-comment: false
+          node-version: '20'
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      - name: Deploy to Netlify
+        run: |
+          netlify deploy \
+            --dir . \
+            --site 44c010ee-cbcf-4b96-8d6b-8e561985b744 \
+            --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} \
+            --prod \
+            --message "Deploy from GitHub Actions"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: 44c010ee-cbcf-4b96-8d6b-8e561985b744
-        timeout-minutes: 10
