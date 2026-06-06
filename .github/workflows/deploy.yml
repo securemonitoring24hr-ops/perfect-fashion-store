@@ -11,23 +11,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      
+      - name: Deploy to Netlify (Production)
+        uses: nwtgck/actions-netlify@v3.0
         with:
-          node-version: '20'
-
-      - name: Install Netlify CLI
-        run: npm install -g netlify-cli
-
-      - name: Deploy to Netlify
-        run: |
-          netlify deploy \
-            --dir . \
-            --site 44c010ee-cbcf-4b96-8d6b-8e561985b744 \
-            --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} \
-            --prod \
-            --message "Deploy from GitHub Actions"
+          publish-dir: '.'
+          production-deploy: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Production deploy — Perfect Fashion Store"
+          enable-pull-request-comment: false
+          enable-commit-comment: false
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: 44c010ee-cbcf-4b96-8d6b-8e561985b744
