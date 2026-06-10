@@ -1,0 +1,10 @@
+{
+  "name": "perfect-fashion-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Perfect Fashion Store — storefront with admin panel",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0",
+    "@netlify/functions": "^2.8.1"
+  }
+}
