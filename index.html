@@ -1247,9 +1247,10 @@ document.getElementById('modal').addEventListener('click', e => { if (e.target =
 
 // ── SMOOTH SCROLL ──
 document.querySelectorAll('a[href^="#"]').forEach(a => {
+  if (a.id === 'mWhatsapp' || a.target === '_blank') return; // skip dynamic/external links
   a.addEventListener('click', function(e) {
     const h = this.getAttribute('href');
-    if (h === '#') return;
+    if (!h || h === '#' || h.length < 2) return;
     e.preventDefault();
     const t = document.querySelector(h);
     if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
