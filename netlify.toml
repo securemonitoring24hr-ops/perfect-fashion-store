@@ -1,10 +1,18 @@
 [build]
   publish = "."
-  command = ""
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Clean hidden admin URL: /admin -> admin.html
+[[redirects]]
+  from = "/admin"
+  to = "/admin.html"
+  status = 200
+
+# Keep admin out of search engines
 [[headers]]
-  for = "/*"
+  for = "/admin.html"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
-    X-Frame-Options = "SAMEORIGIN"
-    X-Content-Type-Options = "nosniff"
+    X-Robots-Tag = "noindex, nofollow"
