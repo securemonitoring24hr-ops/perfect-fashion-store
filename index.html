@@ -618,7 +618,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     <button class="ftab" onclick="filterCat('combos',this)">Combo Sets</button>
     <button class="ftab" onclick="filterCat('tees',this)">Graphic Tees</button>
   </div>
-  <div class="prod-grid">
+  <div class="prod-grid" id="prodGrid">
     <div class="prod-card reveal" data-cat="shirts" onclick="openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped Shirt','₹599','Premium Right Colours full-sleeve striped shirt in classic black or grey. Soft cotton blend with a smart vertical stripe. Available in M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
         <img loading="lazy" src="rc-stripe-pair.jpg" alt="Right Colours Striped Shirt">
@@ -1055,6 +1055,7 @@ function closeNav() { document.getElementById('mobileNav').classList.remove('ope
 
 // ── SCROLL REVEAL ──
 const ro = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } }), { threshold: .13, rootMargin: '0px 0px -36px 0px' });
+window.__revealObserver = ro;
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
 // ── STATS COUNTER ──
@@ -1270,6 +1271,72 @@ window.addEventListener('scroll', () => {
 window.addEventListener('scroll', () => {
   document.getElementById('backTop').classList.toggle('show', window.scrollY > 800);
 }, {passive:true});
+</script>
+<script>
+// ── Load admin-managed products from the server and inject into the grid ──
+(async function loadDynamicProducts() {
+  try {
+    const r = await fetch('/api?action=products');
+    if (!r.ok) return;
+    const { products } = await r.json();
+    if (!products || !products.length) return;
+
+    const grid = document.getElementById('prodGrid');
+    if (!grid) return;
+
+    const frag = document.createDocumentFragment();
+    products.forEach(p => {
+      const imgUrls = (p.images || []).map(id => '/api?action=image&id=' + id);
+      const mainImg = imgUrls[0] || 'favicon-192.png';
+      const altImg = imgUrls[1] || mainImg;
+      const price = '₹' + p.price;
+      const sizesTxt = (p.sizes || []).join(' ');
+      const catKey = (p.category || '').toLowerCase().includes('combo') ? 'combos'
+                   : (p.category || '').toLowerCase().includes('tee') ? 'tees' : 'shirts';
+
+      // Register in the modal PRODUCTS map (images + sizes)
+      PRODUCTS[p.name] = { sizes: p.sizes && p.sizes.length ? p.sizes : ['M','L','XL'], images: imgUrls.length ? imgUrls : [mainImg] };
+
+      const card = document.createElement('div');
+      card.className = 'prod-card reveal';
+      card.setAttribute('data-cat', catKey);
+      card.addEventListener('click', () => openModal(mainImg, p.category || 'Shirts', p.name, price, p.desc || ''));
+      card.innerHTML = `
+        <div class="prod-img-wrap">
+          <img loading="lazy" src="${mainImg}" alt="${escAttr(p.name)}">
+          <img loading="lazy" class="img-alt" src="${altImg}" alt="${escAttr(p.name)}">
+          <div class="prod-actions">
+            <button class="atc-btn">Enquire on WhatsApp</button>
+            <button class="wish-btn" aria-label="Instagram">⌾</button>
+          </div>
+        </div>
+        <div class="prod-cat">${escHtml(p.category || 'Shirts')}${sizesTxt ? ' · ' + escHtml(sizesTxt) : ''}</div>
+        <div class="prod-name">${escHtml(p.name)}</div>
+        <div class="prod-price"><span class="sale">${escHtml(price)}</span> · Free Delivery</div>`;
+
+      // wire buttons (avoid inline onclick with user data)
+      const atc = card.querySelector('.atc-btn');
+      atc.addEventListener('click', e => { e.stopPropagation(); waEnquire(p.name + ' - ' + price); });
+      const ig = card.querySelector('.wish-btn');
+      ig.addEventListener('click', e => { e.stopPropagation(); window.open('https://instagram.com/perfect_dresses.bkd','_blank'); });
+
+      frag.appendChild(card);
+    });
+
+    // newest admin products appear first
+    grid.insertBefore(frag, grid.firstChild);
+
+    // re-run reveal animation on new cards if observer exists
+    if (window.__revealObserver) {
+      grid.querySelectorAll('.prod-card.reveal:not(.in)').forEach(el => window.__revealObserver.observe(el));
+    } else {
+      grid.querySelectorAll('.prod-card.reveal').forEach(el => el.classList.add('in'));
+    }
+  } catch (e) { /* offline or function not deployed yet — static products still show */ }
+
+  function escHtml(s){ return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+  function escAttr(s){ return String(s==null?'':s).replace(/["'&<>]/g,c=>({'"':'&quot;',"'":'&#39;','&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+})();
 </script>
 </body>
 </html>
