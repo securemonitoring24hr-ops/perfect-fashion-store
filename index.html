@@ -102,6 +102,9 @@ nav.scrolled { background: rgba(17,17,16,.93); backdrop-filter: blur(20px); -web
 .mobile-nav.open { transform: translateX(0); }
 .mobile-nav a { font-family: var(--font-display); font-size: clamp(2rem,7vw,3rem); font-weight: 300; color: var(--cream); text-decoration: none; letter-spacing: .05em; transition: color .3s; }
 .mobile-nav a:hover { color: var(--rust-light); font-style: italic; }
+.mobile-nav-social { display: flex; gap: 28px; margin-top: 18px; }
+.mobile-nav-social a { font-family: var(--font-body); font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; opacity: .6; }
+.mobile-nav-social a:hover { opacity: 1; font-style: normal; }
 
 /* ===== HERO ===== */
 .hero { position: relative; height: 100vh; width: 100%; overflow: hidden; display: flex; align-items: flex-end; }
@@ -423,6 +426,11 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
+  /* Hide the WhatsApp/Instagram text links on mobile — they crowd the logo.
+     The hamburger menu, floating WhatsApp button, and contact section cover these. */
+  .nav-right .nav-icon { display: none; }
+  .nav-right { gap: 0; }
+  .nav-logo { font-size: 1.5rem; letter-spacing: .18em; }
   .feat-grid { grid-template-columns: 1fr 1fr; }
   .prod-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .lookbook-row { grid-template-columns: 1fr; }
@@ -441,6 +449,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 @media (max-width: 600px) {
   nav { padding: 14px 18px; }
   nav.scrolled { padding: 10px 18px; }
+  .nav-logo { font-size: 1.35rem; letter-spacing: .14em; }
   .feat-grid { grid-template-columns: 1fr; }
   .prod-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .feats { grid-template-columns: 1fr; }
@@ -477,6 +486,10 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   <a href="#lookbook" onclick="closeNav()">Lookbook</a>
   <a href="#video" onclick="closeNav()">Campaign</a>
   <a href="#contact" onclick="closeNav()">Visit Us</a>
+  <div class="mobile-nav-social">
+    <a href="https://wa.me/919949042570" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://instagram.com/perfect_dresses.bkd" target="_blank" rel="noopener">Instagram</a>
+  </div>
 </div>
 
 <!-- QUICK VIEW MODAL -->
