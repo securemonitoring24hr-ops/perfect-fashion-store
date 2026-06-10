@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin · Perfect Fashion Store</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<style>
+  :root {
+    --rust:#C4541A; --rust-light:#E06B2E; --cream:#F5F0E8; --charcoal:#1A1A18;
+    --off-black:#0F0F0E; --mid:#8a8580; --line:rgba(255,255,255,.1);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:var(--off-black); color:var(--cream); min-height:100vh; -webkit-font-smoothing:antialiased; }
+  a { color:var(--rust-light); }
+  .wrap { max-width:880px; margin:0 auto; padding:24px 18px 80px; }
+  h1 { font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:1.6rem; letter-spacing:.02em; }
+  h1 em { color:var(--rust-light); font-style:italic; }
+  .sub { color:var(--mid); font-size:.8rem; margin-top:4px; letter-spacing:.03em; }
+  .card { background:#171716; border:1px solid var(--line); border-radius:14px; padding:22px; margin-top:18px; }
+  label { display:block; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--mid); margin:14px 0 7px; }
+  input[type=text], input[type=password], textarea, select {
+    width:100%; background:#0e0e0d; border:1px solid var(--line); color:var(--cream);
+    padding:13px 14px; border-radius:9px; font-size:.95rem; font-family:inherit; transition:border-color .2s;
+  }
+  input:focus, textarea:focus, select:focus { outline:none; border-color:var(--rust); }
+  textarea { resize:vertical; min-height:74px; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--rust); color:#fff; border:none; padding:14px 22px; border-radius:9px; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600; cursor:pointer; font-family:inherit; transition:background .2s,transform .15s; width:100%; }
+  .btn:hover { background:var(--rust-light); }
+  .btn:active { transform:scale(.98); }
+  .btn.ghost { background:transparent; border:1px solid var(--line); color:var(--cream); }
+  .btn.ghost:hover { border-color:var(--rust); color:var(--rust-light); background:transparent; }
+  .btn.danger { background:transparent; border:1px solid rgba(220,80,60,.4); color:#e8806e; }
+  .btn.danger:hover { background:rgba(220,80,60,.12); }
+  .btn.sm { width:auto; padding:9px 16px; font-size:.7rem; }
+  .row { display:flex; gap:10px; flex-wrap:wrap; }
+  .row > * { flex:1; min-width:0; }
+  .msg { padding:11px 14px; border-radius:9px; font-size:.85rem; margin-top:14px; display:none; }
+  .msg.err { background:rgba(220,80,60,.14); color:#f0a595; border:1px solid rgba(220,80,60,.3); display:block; }
+  .msg.ok { background:rgba(80,200,120,.12); color:#86e0a4; border:1px solid rgba(80,200,120,.3); display:block; }
+  .hidden { display:none !important; }
+  /* size chips */
+  .sizechips { display:flex; gap:8px; flex-wrap:wrap; }
+  .sizechip { padding:9px 16px; border:1px solid var(--line); border-radius:7px; cursor:pointer; font-size:.85rem; user-select:none; transition:all .2s; }
+  .sizechip.on { background:var(--rust); border-color:var(--rust); color:#fff; }
+  /* image upload */
+  .imgrow { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+  .thumb { position:relative; width:78px; height:78px; border-radius:9px; overflow:hidden; border:1px solid var(--line); }
+  .thumb img { width:100%; height:100%; object-fit:cover; }
+  .thumb button { position:absolute; top:3px; right:3px; width:20px; height:20px; border-radius:50%; background:rgba(0,0,0,.7); color:#fff; border:none; font-size:.7rem; cursor:pointer; line-height:1; }
+  .addimg { width:78px; height:78px; border:1px dashed var(--line); border-radius:9px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.6rem; color:var(--mid); background:#0e0e0d; }
+  .addimg:hover { border-color:var(--rust); color:var(--rust-light); }
+  /* product list */
+  .plist { display:grid; grid-template-columns:1fr; gap:12px; margin-top:6px; }
+  .pcard { display:flex; gap:14px; align-items:center; background:#171716; border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .pcard img { width:60px; height:60px; object-fit:cover; border-radius:8px; flex-shrink:0; background:#0e0e0d; }
+  .pcard .pinfo { flex:1; min-width:0; }
+  .pcard .pn { font-weight:600; font-size:.95rem; }
+  .pcard .pm { color:var(--mid); font-size:.78rem; margin-top:2px; }
+  .pcard .pacts { display:flex; gap:7px; flex-shrink:0; }
+  .pcard .pacts button { padding:8px 12px; font-size:.68rem; }
+  .topbar { display:flex; justify-content:space-between; align-items:flex-start; gap:14px; }
+  .tabs { display:flex; gap:8px; margin-top:20px; border-bottom:1px solid var(--line); }
+  .tab { padding:11px 4px; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--mid); cursor:pointer; border-bottom:2px solid transparent; margin-right:18px; }
+  .tab.on { color:var(--cream); border-bottom-color:var(--rust); }
+  .spin { display:inline-block; width:15px; height:15px; border:2px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:s .7s linear infinite; }
+  @keyframes s { to { transform:rotate(360deg); } }
+  .center { text-align:center; }
+  .lead { font-family:Georgia,serif; font-size:2.2rem; letter-spacing:.06em; }
+  .lead em { color:var(--rust-light); font-style:italic; }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginView" class="wrap">
+  <div style="height:8vh"></div>
+  <div class="center">
+    <div class="lead"><em>P</em>ERFECT</div>
+    <div class="sub" style="margin-top:6px">Store Admin Panel</div>
+  </div>
+  <div class="card" style="max-width:380px;margin:26px auto 0">
+    <label>Password</label>
+    <input type="password" id="pw" placeholder="Enter admin password" autocomplete="current-password" onkeydown="if(event.key==='Enter')login()">
+    <div style="height:16px"></div>
+    <button class="btn" id="loginBtn" onclick="login()">Log In</button>
+    <div class="msg" id="loginMsg"></div>
+  </div>
+  <div class="center sub" style="margin-top:24px"><a href="/">← Back to store</a></div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashView" class="wrap hidden">
+  <div class="topbar">
+    <div>
+      <h1>Store <em>Admin</em></h1>
+      <div class="sub">Manage your products — changes go live for all customers</div>
+    </div>
+    <button class="btn ghost sm" onclick="logout()">Log Out</button>
+  </div>
+
+  <div class="tabs">
+    <div class="tab on" id="tabProducts" onclick="showTab('products')">Products</div>
+    <div class="tab" id="tabAdd" onclick="showTab('add')">Add New</div>
+    <div class="tab" id="tabSettings" onclick="showTab('settings')">Settings</div>
+  </div>
+
+  <!-- PRODUCTS LIST -->
+  <div id="paneProducts">
+    <div class="card">
+      <div class="topbar" style="align-items:center">
+        <div style="font-weight:600">Current Products (<span id="pcount">0</span>)</div>
+        <button class="btn sm" onclick="showTab('add')">+ Add Product</button>
+      </div>
+      <div class="plist" id="plist"></div>
+      <div id="emptyState" class="center sub hidden" style="padding:30px 0">No products yet. Tap "Add New" to create your first one.</div>
+    </div>
+  </div>
+
+  <!-- ADD / EDIT -->
+  <div id="paneAdd" class="hidden">
+    <div class="card">
+      <div style="font-weight:600;font-size:1.05rem" id="formTitle">Add New Product</div>
+      <input type="hidden" id="editId">
+
+      <label>Product Name</label>
+      <input type="text" id="fName" placeholder="e.g. Satin Cotton Checks">
+
+      <div class="row">
+        <div>
+          <label>Price (₹)</label>
+          <input type="text" id="fPrice" placeholder="e.g. 549" inputmode="numeric">
+        </div>
+        <div>
+          <label>Category</label>
+          <select id="fCat">
+            <option>Shirts</option>
+            <option>Combo Sets</option>
+            <option>Graphic Tees</option>
+            <option>Bottoms</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <label>Available Sizes</label>
+      <div class="sizechips" id="fSizes">
+        <div class="sizechip" data-s="S" onclick="toggleSize(this)">S</div>
+        <div class="sizechip" data-s="M" onclick="toggleSize(this)">M</div>
+        <div class="sizechip" data-s="L" onclick="toggleSize(this)">L</div>
+        <div class="sizechip" data-s="XL" onclick="toggleSize(this)">XL</div>
+        <div class="sizechip" data-s="XXL" onclick="toggleSize(this)">XXL</div>
+      </div>
+
+      <label>Description</label>
+      <textarea id="fDesc" placeholder="Short description shown to customers (fabric, fit, etc.)"></textarea>
+
+      <label>Photos (first photo is the main one)</label>
+      <div class="imgrow" id="fImages">
+        <div class="addimg" onclick="document.getElementById('fileInput').click()">+</div>
+      </div>
+      <input type="file" id="fileInput" accept="image/*" multiple class="hidden" onchange="handleFiles(event)">
+
+      <div style="height:20px"></div>
+      <div class="row">
+        <button class="btn" id="saveBtn" onclick="saveProduct()">Save Product</button>
+        <button class="btn ghost" onclick="resetForm();showTab('products')">Cancel</button>
+      </div>
+      <div class="msg" id="addMsg"></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="paneSettings" class="hidden">
+    <div class="card">
+      <div style="font-weight:600;font-size:1.05rem">Change Password</div>
+      <label>Current Password</label>
+      <input type="password" id="curPw" placeholder="Current password" autocomplete="current-password">
+      <label>New Password</label>
+      <input type="password" id="newPw" placeholder="New password (min 4 characters)" autocomplete="new-password">
+      <label>Confirm New Password</label>
+      <input type="password" id="confPw" placeholder="Re-type new password" autocomplete="new-password">
+      <div style="height:18px"></div>
+      <button class="btn" id="pwBtn" onclick="changePassword()">Update Password</button>
+      <div class="msg" id="pwMsg"></div>
+    </div>
+    <div class="card">
+      <div style="font-weight:600">About</div>
+      <div class="sub" style="margin-top:8px;line-height:1.6">
+        Products you add here are saved on the server and appear instantly on your live website for all customers.
+        Photos are stored securely. You stay logged in for 12 hours, then you'll need to log in again.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = '/api';
+let token = sessionStorage.getItem('pfs_token') || '';
+let pendingImages = []; // {id?} or {data}
+let selectedSizes = [];
+
+// ── Auth ──
+async function login() {
+  const pw = document.getElementById('pw').value;
+  const btn = document.getElementById('loginBtn');
+  const msg = document.getElementById('loginMsg');
+  msg.className = 'msg';
+  if (!pw) { msg.className='msg err'; msg.textContent='Enter the password'; return; }
+  btn.innerHTML = '<span class="spin"></span>';
+  try {
+    const r = await fetch(`${API}?action=login`, { method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({password:pw}) });
+    const d = await r.json();
+    if (!r.ok) { msg.className='msg err'; msg.textContent = d.error || 'Login failed'; btn.textContent='Log In'; return; }
+    token = d.token;
+    sessionStorage.setItem('pfs_token', token);
+    enterDash();
+  } catch(e) {
+    msg.className='msg err'; msg.textContent='Network error. Try again.'; btn.textContent='Log In';
+  }
+}
+
+async function logout() {
+  try { await fetch(`${API}?action=logout`, { method:'POST', headers:authHeaders() }); } catch{}
+  token=''; sessionStorage.removeItem('pfs_token');
+  document.getElementById('dashView').classList.add('hidden');
+  document.getElementById('loginView').classList.remove('hidden');
+  document.getElementById('pw').value='';
+  document.getElementById('loginBtn').textContent='Log In';
+}
+
+function authHeaders() { return { 'content-type':'application/json', 'authorization':'Bearer '+token }; }
+
+function enterDash() {
+  document.getElementById('loginView').classList.add('hidden');
+  document.getElementById('dashView').classList.remove('hidden');
+  showTab('products');
+  loadProducts();
+}
+
+// ── Tabs ──
+function showTab(t) {
+  ['Products','Add','Settings'].forEach(n=>{
+    document.getElementById('pane'+n).classList.add('hidden');
+    document.getElementById('tab'+n).classList.remove('on');
+  });
+  const map = { products:'Products', add:'Add', settings:'Settings' };
+  document.getElementById('pane'+map[t]).classList.remove('hidden');
+  document.getElementById('tab'+map[t]).classList.add('on');
+  if (t==='add' && !document.getElementById('editId').value) resetForm();
+}
+
+// ── Products ──
+async function loadProducts() {
+  const list = document.getElementById('plist');
+  list.innerHTML = '<div class="center sub" style="padding:20px"><span class="spin"></span></div>';
+  try {
+    const r = await fetch(`${API}?action=products`);
+    const d = await r.json();
+    const products = d.products || [];
+    document.getElementById('pcount').textContent = products.length;
+    if (!products.length) {
+      list.innerHTML=''; document.getElementById('emptyState').classList.remove('hidden'); return;
+    }
+    document.getElementById('emptyState').classList.add('hidden');
+    list.innerHTML = products.map(p => `
+      <div class="pcard">
+        <img src="${p.images && p.images[0] ? API+'?action=image&id='+p.images[0] : 'favicon-192.png'}" alt="">
+        <div class="pinfo">
+          <div class="pn">${esc(p.name)}</div>
+          <div class="pm">₹${esc(p.price)} · ${esc(p.category)} · ${(p.sizes||[]).join(' ')||'—'}</div>
+        </div>
+        <div class="pacts">
+          <button class="btn ghost sm" onclick='editProduct(${JSON.stringify(JSON.stringify(p))})'>Edit</button>
+          <button class="btn danger sm" onclick="delProduct('${p.id}','${esc(p.name)}')">Delete</button>
+        </div>
+      </div>`).join('');
+  } catch(e) {
+    list.innerHTML = '<div class="msg err" style="display:block">Could not load products.</div>';
+  }
+}
+
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+// ── Add / Edit form ──
+function resetForm() {
+  document.getElementById('editId').value='';
+  document.getElementById('formTitle').textContent='Add New Product';
+  document.getElementById('saveBtn').textContent='Save Product';
+  document.getElementById('fName').value='';
+  document.getElementById('fPrice').value='';
+  document.getElementById('fCat').value='Shirts';
+  document.getElementById('fDesc').value='';
+  selectedSizes=[];
+  document.querySelectorAll('#fSizes .sizechip').forEach(c=>c.classList.remove('on'));
+  pendingImages=[];
+  renderImages();
+  document.getElementById('addMsg').className='msg';
+}
+
+function editProduct(jsonStr) {
+  const p = JSON.parse(jsonStr);
+  showTab('add');
+  document.getElementById('editId').value=p.id;
+  document.getElementById('formTitle').textContent='Edit Product';
+  document.getElementById('saveBtn').textContent='Update Product';
+  document.getElementById('fName').value=p.name||'';
+  document.getElementById('fPrice').value=p.price||'';
+  document.getElementById('fCat').value=p.category||'Shirts';
+  document.getElementById('fDesc').value=p.desc||'';
+  selectedSizes=[...(p.sizes||[])];
+  document.querySelectorAll('#fSizes .sizechip').forEach(c=>c.classList.toggle('on', selectedSizes.includes(c.dataset.s)));
+  pendingImages = (p.images||[]).map(id=>({id}));
+  renderImages();
+}
+
+function toggleSize(el) {
+  const s = el.dataset.s;
+  if (selectedSizes.includes(s)) { selectedSizes=selectedSizes.filter(x=>x!==s); el.classList.remove('on'); }
+  else { selectedSizes.push(s); el.classList.add('on'); }
+}
+
+function handleFiles(ev) {
+  const files = [...ev.target.files];
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      compress(e.target.result, 1100, 0.78).then(dataUrl => {
+        pendingImages.push({ data: dataUrl });
+        renderImages();
+      });
+    };
+    reader.readAsDataURL(file);
+  });
+  ev.target.value='';
+}
+
+// client-side compress so uploads are fast on mobile data
+function compress(dataUrl, maxDim, quality) {
+  return new Promise(res => {
+    const img = new Image();
+    img.onload = () => {
+      let {width,height} = img;
+      if (Math.max(width,height) > maxDim) {
+        const r = maxDim/Math.max(width,height);
+        width=Math.round(width*r); height=Math.round(height*r);
+      }
+      const c = document.createElement('canvas');
+      c.width=width; c.height=height;
+      c.getContext('2d').drawImage(img,0,0,width,height);
+      res(c.toDataURL('image/jpeg', quality));
+    };
+    img.src = dataUrl;
+  });
+}
+
+function renderImages() {
+  const box = document.getElementById('fImages');
+  const add = '<div class="addimg" onclick="document.getElementById(\'fileInput\').click()">+</div>';
+  box.innerHTML = pendingImages.map((img,i)=>`
+    <div class="thumb">
+      <img src="${img.id ? API+'?action=image&id='+img.id : img.data}" alt="">
+      <button onclick="removeImg(${i})">✕</button>
+    </div>`).join('') + add;
+}
+function removeImg(i){ pendingImages.splice(i,1); renderImages(); }
+
+async function saveProduct() {
+  const msg = document.getElementById('addMsg');
+  const btn = document.getElementById('saveBtn');
+  msg.className='msg';
+  const name = document.getElementById('fName').value.trim();
+  const price = document.getElementById('fPrice').value.trim().replace(/[^0-9]/g,'');
+  if (!name) { msg.className='msg err'; msg.textContent='Enter a product name'; return; }
+  if (!price) { msg.className='msg err'; msg.textContent='Enter a price'; return; }
+  if (!pendingImages.length) { msg.className='msg err'; msg.textContent='Add at least one photo'; return; }
+
+  const payload = {
+    id: document.getElementById('editId').value || undefined,
+    name, price,
+    category: document.getElementById('fCat').value,
+    sizes: selectedSizes,
+    desc: document.getElementById('fDesc').value.trim(),
+    images: pendingImages,
+  };
+  btn.innerHTML='<span class="spin"></span>';
+  try {
+    const r = await fetch(`${API}?action=save-product`, { method:'POST', headers:authHeaders(), body:JSON.stringify(payload) });
+    const d = await r.json();
+    if (r.status===401) { alert('Session expired. Please log in again.'); logout(); return; }
+    if (!r.ok) { msg.className='msg err'; msg.textContent=d.error||'Save failed'; btn.textContent='Save Product'; return; }
+    resetForm();
+    showTab('products');
+    loadProducts();
+  } catch(e) {
+    msg.className='msg err'; msg.textContent='Network error. Try again.'; btn.textContent='Save Product';
+  }
+}
+
+async function delProduct(id, name) {
+  if (!confirm('Delete "'+name+'"? This cannot be undone.')) return;
+  try {
+    const r = await fetch(`${API}?action=delete-product`, { method:'POST', headers:authHeaders(), body:JSON.stringify({id}) });
+    if (r.status===401) { alert('Session expired. Please log in again.'); logout(); return; }
+    loadProducts();
+  } catch(e) { alert('Could not delete. Try again.'); }
+}
+
+// ── Password ──
+async function changePassword() {
+  const msg = document.getElementById('pwMsg');
+  const btn = document.getElementById('pwBtn');
+  msg.className='msg';
+  const current = document.getElementById('curPw').value;
+  const next = document.getElementById('newPw').value;
+  const conf = document.getElementById('confPw').value;
+  if (!current || !next) { msg.className='msg err'; msg.textContent='Fill in all fields'; return; }
+  if (next.length < 4) { msg.className='msg err'; msg.textContent='New password must be at least 4 characters'; return; }
+  if (next !== conf) { msg.className='msg err'; msg.textContent='New passwords do not match'; return; }
+  btn.innerHTML='<span class="spin"></span>';
+  try {
+    const r = await fetch(`${API}?action=change-password`, { method:'POST', headers:authHeaders(), body:JSON.stringify({current,next}) });
+    const d = await r.json();
+    if (!r.ok) { msg.className='msg err'; msg.textContent=d.error||'Failed'; btn.textContent='Update Password'; return; }
+    msg.className='msg ok'; msg.textContent='Password updated! Please log in again with your new password.';
+    btn.textContent='Update Password';
+    setTimeout(logout, 1800);
+  } catch(e) {
+    msg.className='msg err'; msg.textContent='Network error. Try again.'; btn.textContent='Update Password';
+  }
+}
+
+// ── Init ──
+window.addEventListener('DOMContentLoaded', () => {
+  if (token) { enterDash(); }  // guarded calls (load/save) re-auth and kick out if the token expired
+});
+</script>
+</body>
+</html>
