@@ -3,8 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Perfect Fashion Store — Premium Streetwear & Lifestyle Clothing. Shop the latest drops.">
-<title>PERFECT — Premium Fashion Store</title>
+<meta name="description" content="Perfect Fashion Store, Bichkunda — Boys & Mens fashion at honest prices. Shirts from ₹450 with free home delivery. Opp. Canara Bank, Weekly Bazar Road. WhatsApp 99490 42570.">
+<meta name="keywords" content="Perfect Fashion Store, Bichkunda, mens shirts, boys fashion, Telangana, free delivery, menswear">
+<title>Perfect Fashion Store — Boys & Mens Fashion, Bichkunda</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="favicon-192.png">
+<meta name="theme-color" content="#C4541A">
+<!-- Open Graph (WhatsApp/Facebook share preview) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Perfect Fashion Store — Boys & Mens Fashion, Bichkunda">
+<meta property="og:description" content="Trendy shirts, tees & combos from ₹450 with FREE home delivery. WhatsApp 99490 42570 to order.">
+<meta property="og:image" content="https://perfect-fashion-store-com.netlify.app/logo.jpg">
+<meta property="og:url" content="https://perfect-fashion-store-com.netlify.app/">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Local Business Schema for Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "name": "Perfect Fashion Store",
+  "image": "https://perfect-fashion-store-com.netlify.app/logo.jpg",
+  "description": "Boys & Mens fashion store in Bichkunda, Telangana. Shirts, tees and combos at honest prices with free home delivery.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Opp. Canara Bank, Weekly Bazar Road",
+    "addressLocality": "Bichkunda",
+    "postalCode": "503306",
+    "addressRegion": "Telangana",
+    "addressCountry": "IN"
+  },
+  "telephone": "+919949042570",
+  "priceRange": "₹450 - ₹699",
+  "sameAs": ["https://instagram.com/perfect_dresses.bkd"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@200;300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
@@ -145,6 +178,14 @@ nav.scrolled { background: rgba(17,17,16,.93); backdrop-filter: blur(20px); -web
 /* ===== NEW ARRIVALS ===== */
 .new-arrivals { padding: clamp(80px,10vh,120px) clamp(20px,5vw,80px); background: var(--off-black); }
 .prod-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+.filter-tabs { display: flex; gap: 10px; margin-bottom: 34px; flex-wrap: wrap; }
+.ftab { font-family: var(--font-body); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; padding: 10px 22px; background: transparent; border: 1px solid rgba(26,26,24,.18); color: var(--charcoal); cursor: pointer; transition: all .3s var(--ease); }
+.ftab:hover { border-color: var(--rust); color: var(--rust); }
+.ftab.on { background: var(--rust); border-color: var(--rust); color: var(--cream); }
+.prod-card.hide { display: none; }
+#backTop { position: fixed; bottom: 92px; right: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--charcoal); color: var(--cream); border: 1px solid rgba(255,255,255,.15); font-size: 1.1rem; cursor: pointer; opacity: 0; pointer-events: none; transition: all .35s var(--ease); z-index: 900; }
+#backTop.show { opacity: 1; pointer-events: auto; }
+#backTop:hover { background: var(--rust); transform: translateY(-3px); }
 .prod-card { cursor: pointer; }
 .prod-img-wrap { position: relative; overflow: hidden; aspect-ratio: 3/4; background: var(--charcoal); margin-bottom: 14px; }
 .prod-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: all .7s var(--ease-out); display: block; }
@@ -293,7 +334,14 @@ video::-webkit-media-controls-overlay-enclosure { display: none !important; }
 .visit-title em { font-style: italic; color: rgba(245,240,232,.75); }
 .visit-addr { font-size: .92rem; line-height: 1.8; color: rgba(245,240,232,.82); margin-bottom: 14px; display: flex; gap: 12px; align-items: flex-start; }
 .visit-addr .pin { font-size: 1.2rem; flex-shrink: 0; }
-.visit-owner { font-size: .85rem; color: rgba(245,240,232,.7); letter-spacing: .04em; margin-bottom: 32px; }
+.visit-owner { font-size: .85rem; color: rgba(245,240,232,.7); letter-spacing: .04em; margin-bottom: 14px; }
+.visit-hours { display: inline-flex; align-items: center; gap: 9px; font-size: .8rem; letter-spacing: .08em; color: rgba(245,240,232,.85); background: rgba(255,255,255,.08); padding: 9px 16px; border-radius: 100px; margin-bottom: 30px; }
+.vh-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80; animation: pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+.contact-btn.mp:hover { background: #4285F4; color: #fff; }
+.contact-btn.mp .cb-icon { background: #4285F4; color: #fff; }
+.contact-btn.sh:hover { background: var(--charcoal); color: #fff; }
+.contact-btn.sh .cb-icon { background: var(--charcoal); color: #fff; }
 .visit-actions { display: flex; flex-direction: column; gap: 14px; }
 .contact-btn { display: flex; align-items: center; gap: 14px; background: var(--cream); color: var(--charcoal); text-decoration: none; padding: 18px 24px; transition: all .3s var(--ease); }
 .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(17,17,16,.25); }
@@ -345,8 +393,13 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 .modal-bg.open { opacity: 1; pointer-events: all; }
 .modal { background: var(--charcoal); max-width: 860px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; transform: scale(.92) translateY(20px); transition: transform .4s var(--ease-out); position: relative; max-height: 90vh; }
 .modal-bg.open .modal { transform: scale(1) translateY(0); }
-.modal-img-wrap { overflow: hidden; }
-.modal-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.modal-img-wrap { overflow: hidden; position: relative; }
+.modal-img-wrap img#mImg { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.modal-thumbs { position: absolute; bottom: 10px; left: 10px; right: 10px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.modal-thumbs::-webkit-scrollbar { display: none; }
+.mthumb { width: 48px; height: 48px; object-fit: cover; border: 2px solid rgba(255,255,255,.5); cursor: pointer; opacity: .75; transition: all .25s var(--ease); flex-shrink: 0; border-radius: 4px; }
+.mthumb:hover { opacity: 1; }
+.mthumb.on { border-color: var(--rust); opacity: 1; }
 .modal-body { padding: 44px 36px; display: flex; flex-direction: column; gap: 18px; overflow-y: auto; justify-content: center; }
 .modal-cat { font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: var(--rust-light); }
 .modal-nm { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--cream); line-height: 1.1; }
@@ -430,7 +483,10 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 <div class="modal-bg" id="modal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">&#x2715;</button>
-    <div class="modal-img-wrap"><img id="mImg" src="" alt=""></div>
+    <div class="modal-img-wrap">
+      <img id="mImg" src="" alt="">
+      <div class="modal-thumbs" id="mThumbs"></div>
+    </div>
     <div class="modal-body">
       <div class="modal-cat" id="mCat"></div>
       <div class="modal-nm" id="mName"></div>
@@ -438,14 +494,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <p class="modal-desc" id="mDesc"></p>
       <div>
         <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid-gray);margin-bottom:10px">Select Size</div>
-        <div class="sizes">
-          <button class="sz" onclick="pickSz(this)">XS</button>
-          <button class="sz" onclick="pickSz(this)">S</button>
-          <button class="sz on" onclick="pickSz(this)">M</button>
-          <button class="sz" onclick="pickSz(this)">L</button>
-          <button class="sz" onclick="pickSz(this)">XL</button>
-          <button class="sz" onclick="pickSz(this)">XXL</button>
-        </div>
+        <div class="sizes" id="mSizes"></div>
       </div>
       <a id="mWhatsapp" href="#" target="_blank" rel="noopener" class="btn-rust" style="margin-top:6px">Enquire on WhatsApp &rarr;</a>
       <a id="mInsta" href="https://instagram.com/perfect_dresses.bkd" target="_blank" rel="noopener" class="btn-ghost" style="margin-top:-8px">View on Instagram</a>
@@ -521,7 +570,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     <div class="feat-card reveal" onclick="openModal('adv-maroon-blue.jpg','Combo Sets','Adventure Cargo Shirt + Tee','₹699','R2O double-pocket cargo shirt paired with a Great Adventure graphic tee — a complete ready-to-wear combo. Shirt colours: maroon, black, brown, sky-blue, lavender. Available in M, L, XL. Free home delivery.')">
       <span class="feat-badge">Combo</span>
       <button class="qv-btn" onclick="event.stopPropagation();openModal('adv-maroon-blue.jpg','Combo Sets','Adventure Cargo Shirt + Tee','₹699','R2O double-pocket cargo shirt with a Great Adventure graphic tee. Multiple colours. Available M, L, XL. Free home delivery.')">Quick View</button>
-      <img src="adv-maroon-blue.jpg" alt="Adventure Cargo Shirt and Tee Combo">
+      <img loading="lazy" src="adv-maroon-blue.jpg" alt="Adventure Cargo Shirt and Tee Combo">
       <div class="feat-card-glass"></div>
       <div class="feat-card-info">
         <div class="fc-cat">Combo Sets</div>
@@ -532,7 +581,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     <div class="feat-card reveal d1" onclick="openModal('leopard-check-trio.jpg','Shirts','Leopard Checks Shirt','₹599','LEOPARD windowpane checked shirt with signature back print, available in wine, cream and black. Lightweight and breathable. Available in M, L, XL. Free home delivery.')">
       <span class="feat-badge">New</span>
       <button class="qv-btn" onclick="event.stopPropagation();openModal('leopard-check-trio.jpg','Shirts','Leopard Checks Shirt','₹599','LEOPARD windowpane checked shirt with back print. Wine, cream, black. Available M, L, XL. Free home delivery.')">Quick View</button>
-      <img src="leopard-check-trio.jpg" alt="Leopard Checks Shirt">
+      <img loading="lazy" src="leopard-check-trio.jpg" alt="Leopard Checks Shirt">
       <div class="feat-card-glass"></div>
       <div class="feat-card-info">
         <div class="fc-cat">Shirts</div>
@@ -543,7 +592,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     <div class="feat-card reveal d2" onclick="openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped Shirt','₹599','Premium Right Colours full-sleeve striped shirt in classic black or grey. Soft cotton blend with a smart vertical stripe. Available in M, L, XL. Free home delivery.')">
       <span class="feat-badge" style="background:var(--charcoal)">Trending</span>
       <button class="qv-btn" onclick="event.stopPropagation();openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped Shirt','₹599','Right Colours striped shirt in black or grey. Soft cotton blend. Available M, L, XL. Free home delivery.')">Quick View</button>
-      <img src="rc-stripe-pair.jpg" alt="Right Colours Striped Shirt">
+      <img loading="lazy" src="rc-stripe-pair.jpg" alt="Right Colours Striped Shirt">
       <div class="feat-card-glass"></div>
       <div class="feat-card-info">
         <div class="fc-cat">Shirts</div>
@@ -563,11 +612,17 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     </div>
     <a href="#contact" class="view-all">Enquire</a>
   </div>
+  <div class="filter-tabs reveal">
+    <button class="ftab on" onclick="filterCat('all',this)">All</button>
+    <button class="ftab" onclick="filterCat('shirts',this)">Shirts</button>
+    <button class="ftab" onclick="filterCat('combos',this)">Combo Sets</button>
+    <button class="ftab" onclick="filterCat('tees',this)">Graphic Tees</button>
+  </div>
   <div class="prod-grid">
-    <div class="prod-card reveal " onclick="openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped Shirt','₹599','Premium Right Colours full-sleeve striped shirt in classic black or grey. Soft cotton blend with a smart vertical stripe. Available in M, L, XL. Free home delivery.')">
+    <div class="prod-card reveal" data-cat="shirts" onclick="openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped Shirt','₹599','Premium Right Colours full-sleeve striped shirt in classic black or grey. Soft cotton blend with a smart vertical stripe. Available in M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="rc-stripe-pair.jpg" alt="Right Colours Striped Shirt">
-        <img class="img-alt" src="rc-stripe-pair.jpg" alt="Right Colours Striped Shirt alt">
+        <img loading="lazy" src="rc-stripe-pair.jpg" alt="Right Colours Striped Shirt">
+        <img loading="lazy" class="img-alt" src="rc-stripe-pair.jpg" alt="Right Colours Striped Shirt alt">
         <div class="prod-actions">
           <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Right Colours Striped Shirt - ₹599')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
@@ -577,10 +632,10 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="prod-name">Right Colours Striped Shirt</div>
       <div class="prod-price"><span class="sale">₹599</span> · Free Delivery</div>
     </div>
-    <div class="prod-card reveal d1" onclick="openModal('rc-checks-pair.jpg','Shirts','Right Colours Checks Shirt','₹599','Right Colours full-sleeve checked shirt in charcoal or beige plaid. Crisp cotton finish, perfect for casual and semi-formal looks. Available in M, L, XL. Free home delivery.')">
+    <div class="prod-card reveal d1" data-cat="shirts" onclick="openModal('rc-checks-pair.jpg','Shirts','Right Colours Checks Shirt','₹599','Right Colours full-sleeve checked shirt in charcoal or beige plaid. Crisp cotton finish, perfect for casual and semi-formal looks. Available in M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="rc-checks-pair.jpg" alt="Right Colours Checks Shirt">
-        <img class="img-alt" src="rc-checks-pair.jpg" alt="Right Colours Checks Shirt alt">
+        <img loading="lazy" src="rc-checks-pair.jpg" alt="Right Colours Checks Shirt">
+        <img loading="lazy" class="img-alt" src="rc-checks-pair.jpg" alt="Right Colours Checks Shirt alt">
         <div class="prod-actions">
           <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Right Colours Checks Shirt - ₹599')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
@@ -590,10 +645,10 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="prod-name">Right Colours Checks Shirt</div>
       <div class="prod-price"><span class="sale">₹599</span> · Free Delivery</div>
     </div>
-    <div class="prod-card reveal d2" onclick="openModal('leopard-check-trio.jpg','Shirts','Leopard Checks Shirt','₹599','LEOPARD windowpane checked shirt with signature back print, available in wine, cream and black. Lightweight and breathable. Available in M, L, XL. Free home delivery.')">
+    <div class="prod-card reveal d2" data-cat="shirts" onclick="openModal('leopard-check-trio.jpg','Shirts','Leopard Checks Shirt','₹599','LEOPARD windowpane checked shirt with signature back print, available in wine, cream and black. Lightweight and breathable. Available in M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="leopard-check-trio.jpg" alt="Leopard Checks Shirt">
-        <img class="img-alt" src="leopard-check-trio2.jpg" alt="Leopard Checks Shirt alt">
+        <img loading="lazy" src="leopard-check-trio.jpg" alt="Leopard Checks Shirt">
+        <img loading="lazy" class="img-alt" src="leopard-check-trio2.jpg" alt="Leopard Checks Shirt alt">
         <div class="prod-actions">
           <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Leopard Checks Shirt - ₹599')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
@@ -603,10 +658,10 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="prod-name">Leopard Checks Shirt</div>
       <div class="prod-price"><span class="sale">₹599</span> · Free Delivery</div>
     </div>
-    <div class="prod-card reveal d3" onclick="openModal('adv-maroon-blue.jpg','Combo Sets','Adventure Cargo Shirt + Tee','₹699','R2O double-pocket cargo shirt paired with a "Great Adventure" graphic tee. A complete ready-to-wear combo. Shirt colours: maroon, black, brown, sky-blue, lavender. Available in M, L, XL. Free home delivery.')">
+    <div class="prod-card reveal d3" data-cat="combos" onclick="openModal('adv-maroon-blue.jpg','Combo Sets','Adventure Cargo Shirt + Tee','₹699','R2O double-pocket cargo shirt paired with a "Great Adventure" graphic tee. A complete ready-to-wear combo. Shirt colours: maroon, black, brown, sky-blue, lavender. Available in M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="adv-maroon-blue.jpg" alt="Adventure Cargo Shirt + Tee">
-        <img class="img-alt" src="adv-maroon-blue2.jpg" alt="Adventure Cargo Shirt + Tee alt">
+        <img loading="lazy" src="adv-maroon-blue.jpg" alt="Adventure Cargo Shirt + Tee">
+        <img loading="lazy" class="img-alt" src="adv-maroon-blue2.jpg" alt="Adventure Cargo Shirt + Tee alt">
         <div class="prod-actions">
           <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Adventure Cargo Shirt + Tee - ₹699')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
@@ -616,10 +671,10 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="prod-name">Adventure Cargo Shirt + Tee</div>
       <div class="prod-price"><span class="sale">₹699</span> · Free Delivery</div>
     </div>
-    <div class="prod-card reveal " onclick="openModal('leopard-front-flat.png','Shirts','Cotton Printed Shirt','₹450','Pure cotton printed shirt with olive ikat brushstroke pattern and bold LEOPARD graphic front and back. Lightweight and breathable. Available in S, M, L. Free home delivery.')">
+    <div class="prod-card reveal" data-cat="shirts" onclick="openModal('leopard-front-flat.jpg','Shirts','Cotton Printed Shirt','₹450','Pure cotton printed shirt with olive ikat brushstroke pattern and bold LEOPARD graphic front and back. Lightweight and breathable. Available in S, M, L. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="leopard-front-flat.png" alt="Cotton Printed Shirt">
-        <img class="img-alt" src="leopard-back-flat.png" alt="Cotton Printed Shirt alt">
+        <img loading="lazy" src="leopard-front-flat.jpg" alt="Cotton Printed Shirt">
+        <img loading="lazy" class="img-alt" src="leopard-back-flat.jpg" alt="Cotton Printed Shirt alt">
         <div class="prod-actions">
           <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Cotton Printed Shirt - ₹450')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
@@ -629,10 +684,10 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="prod-name">Cotton Printed Shirt</div>
       <div class="prod-price"><span class="sale">₹450</span> · Free Delivery</div>
     </div>
-    <div class="prod-card reveal d1" onclick="openModal('polo-front.png','Shirts','Satin Cotton Checks','₹549','Premium satin-finish cotton checked shirt with a soft sheen and breathable feel. Smart-casual styling for everyday wear. Available in M, L, XL. Free home delivery.')">
+    <div class="prod-card reveal d1" data-cat="shirts" onclick="openModal('polo-front.jpg','Shirts','Satin Cotton Checks','₹549','Premium satin-finish cotton checked shirt with a soft sheen and breathable feel. Smart-casual styling for everyday wear. Available in M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="polo-front.png" alt="Satin Cotton Checks">
-        <img class="img-alt" src="polo-back.png" alt="Satin Cotton Checks alt">
+        <img loading="lazy" src="polo-front.jpg" alt="Satin Cotton Checks">
+        <img loading="lazy" class="img-alt" src="polo-back.jpg" alt="Satin Cotton Checks alt">
         <div class="prod-actions">
           <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Satin Cotton Checks - ₹549')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
@@ -642,10 +697,10 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="prod-name">Satin Cotton Checks</div>
       <div class="prod-price"><span class="sale">₹549</span> · Free Delivery</div>
     </div>
-    <div class="prod-card reveal d2" onclick="openModal('jeans-front.png','Shirts','Knitted Denim Shirt','₹649','Soft knitted denim shirt with a relaxed, stretchable fit and premium washed finish. A versatile wardrobe staple. Available in M, L, XL. Free home delivery.')">
+    <div class="prod-card reveal d2" data-cat="shirts" onclick="openModal('jeans-front.jpg','Shirts','Knitted Denim Shirt','₹649','Soft knitted denim shirt with a relaxed, stretchable fit and premium washed finish. A versatile wardrobe staple. Available in M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="jeans-front.png" alt="Knitted Denim Shirt">
-        <img class="img-alt" src="jeans-back.png" alt="Knitted Denim Shirt alt">
+        <img loading="lazy" src="jeans-front.jpg" alt="Knitted Denim Shirt">
+        <img loading="lazy" class="img-alt" src="jeans-back.jpg" alt="Knitted Denim Shirt alt">
         <div class="prod-actions">
           <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Knitted Denim Shirt - ₹649')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
@@ -655,10 +710,10 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <div class="prod-name">Knitted Denim Shirt</div>
       <div class="prod-price"><span class="sale">₹649</span> · Free Delivery</div>
     </div>
-    <div class="prod-card reveal d3" onclick="openModal('wakanda-tee.png','Graphic Tees','Wakanda Graphic Tee','₹499','Oversized heavyweight cotton tee with a bold front graphic print. Soft, durable and street-ready. Available in S, M, L, XL. Free home delivery.')">
+    <div class="prod-card reveal d3" data-cat="tees" onclick="openModal('wakanda-tee.jpg','Graphic Tees','Wakanda Graphic Tee','₹499','Oversized heavyweight cotton tee with a bold front graphic print. Soft, durable and street-ready. Available in S, M, L, XL. Free home delivery.')">
       <div class="prod-img-wrap">
-        <img src="wakanda-tee.png" alt="Wakanda Graphic Tee">
-        <img class="img-alt" src="cargo-side.png" alt="Wakanda Graphic Tee alt">
+        <img loading="lazy" src="wakanda-tee.jpg" alt="Wakanda Graphic Tee">
+        <img loading="lazy" class="img-alt" src="cargo-side.jpg" alt="Wakanda Graphic Tee alt">
         <div class="prod-actions">
           <button class="atc-btn" onclick="event.stopPropagation();waEnquire('Wakanda Graphic Tee - ₹499')">Enquire on WhatsApp</button>
           <button class="wish-btn" onclick="event.stopPropagation();window.open('https://instagram.com/perfect_dresses.bkd','_blank')" aria-label="Instagram">⌾</button>
@@ -713,7 +768,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 <section id="lookbook">
   <div class="lookbook-row">
     <div class="lb-visual reveal">
-      <img src="adv-maroon-blue.jpg" alt="Adventure Combo Lookbook">
+      <img loading="lazy" src="adv-maroon-blue.jpg" alt="Adventure Combo Lookbook">
     </div>
     <div class="lb-copy light">
       <div class="s-label reveal">Our Story</div>
@@ -724,7 +779,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   </div>
   <div class="lookbook-row rev">
     <div class="lb-visual reveal">
-      <img src="leopard-check-trio.jpg" alt="Leopard Checks Lookbook">
+      <img loading="lazy" src="leopard-check-trio.jpg" alt="Leopard Checks Lookbook">
     </div>
     <div class="lb-copy dark">
       <div class="s-label reveal" style="color:var(--rust-light)">Why Perfect</div>
@@ -754,35 +809,35 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   <div class="car-wrap">
         <div class="car-track" id="carTrack">
       <div class="car-item" onclick="openModal('adv-black-pink.jpg','Combo Sets','Adventure Combo','₹699','Cargo shirt + graphic tee combo. Available M, L, XL. Free delivery.')">
-        <img src="adv-black-pink.jpg" alt="Adventure Combo">
+        <img loading="lazy" src="adv-black-pink.jpg" alt="Adventure Combo">
         <div class="car-item-info"><div class="ci-cat">Combo Sets</div><div class="ci-name">Adventure Combo</div><div class="ci-price">₹699 · Free Delivery</div></div>
       </div>
       <div class="car-item" onclick="openModal('leopard-bw.jpg','Shirts','Leopard Ikat Shirt','₹450','Cotton printed LEOPARD shirt, black & white. Available S, M, L. Free delivery.')">
-        <img src="leopard-bw.jpg" alt="Leopard Ikat Shirt">
+        <img loading="lazy" src="leopard-bw.jpg" alt="Leopard Ikat Shirt">
         <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Leopard Ikat Shirt</div><div class="ci-price">₹450 · Free Delivery</div></div>
       </div>
       <div class="car-item" onclick="openModal('rc-checks-pair.jpg','Shirts','Right Colours Checks','₹599','Charcoal & beige plaid shirts. Available M, L, XL. Free delivery.')">
-        <img src="rc-checks-pair.jpg" alt="Right Colours Checks">
+        <img loading="lazy" src="rc-checks-pair.jpg" alt="Right Colours Checks">
         <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Right Colours Checks</div><div class="ci-price">₹599 · Free Delivery</div></div>
       </div>
       <div class="car-item" onclick="openModal('adv-brown-blue.jpg','Combo Sets','Adventure Combo','₹699','Brown cargo shirt + adventure tee. Available M, L, XL. Free delivery.')">
-        <img src="adv-brown-blue.jpg" alt="Adventure Combo">
+        <img loading="lazy" src="adv-brown-blue.jpg" alt="Adventure Combo">
         <div class="car-item-info"><div class="ci-cat">Combo Sets</div><div class="ci-name">Adventure Combo</div><div class="ci-price">₹699 · Free Delivery</div></div>
       </div>
       <div class="car-item" onclick="openModal('leopard-check-trio.jpg','Shirts','Leopard Checks','₹599','Windowpane check shirt, 3 colours. Available M, L, XL. Free delivery.')">
-        <img src="leopard-check-trio.jpg" alt="Leopard Checks">
+        <img loading="lazy" src="leopard-check-trio.jpg" alt="Leopard Checks">
         <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Leopard Checks</div><div class="ci-price">₹599 · Free Delivery</div></div>
       </div>
       <div class="car-item" onclick="openModal('adv-skyblue.jpg','Combo Sets','Adventure Combo','₹699','Sky-blue cargo shirt + tee. Available M, L, XL. Free delivery.')">
-        <img src="adv-skyblue.jpg" alt="Adventure Combo">
+        <img loading="lazy" src="adv-skyblue.jpg" alt="Adventure Combo">
         <div class="car-item-info"><div class="ci-cat">Combo Sets</div><div class="ci-name">Adventure Combo</div><div class="ci-price">₹699 · Free Delivery</div></div>
       </div>
       <div class="car-item" onclick="openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped','₹599','Black & grey striped shirts. Available M, L, XL. Free delivery.')">
-        <img src="rc-stripe-pair.jpg" alt="Right Colours Striped">
+        <img loading="lazy" src="rc-stripe-pair.jpg" alt="Right Colours Striped">
         <div class="car-item-info"><div class="ci-cat">Shirts</div><div class="ci-name">Right Colours Striped</div><div class="ci-price">₹599 · Free Delivery</div></div>
       </div>
       <div class="car-item" onclick="openModal('adv-lavender.jpg','Combo Sets','Adventure Combo','₹699','Lavender cargo shirt + tee. Available M, L, XL. Free delivery.')">
-        <img src="adv-lavender.jpg" alt="Adventure Combo">
+        <img loading="lazy" src="adv-lavender.jpg" alt="Adventure Combo">
         <div class="car-item-info"><div class="ci-cat">Combo Sets</div><div class="ci-name">Adventure Combo</div><div class="ci-price">₹699 · Free Delivery</div></div>
       </div>
     </div>
@@ -795,7 +850,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 
 <!-- PROMO BANNER -->
 <div class="promo">
-  <img src="adv-skyblue.jpg" alt="Promo">
+  <img loading="lazy" src="adv-skyblue.jpg" alt="Promo">
   <div class="promo-veil"></div>
   <div class="promo-body">
     <div class="promo-eye reveal">On Every Order</div>
@@ -875,14 +930,14 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     <a href="#" class="view-all">@perfectfashionstore</a>
   </div>
     <div class="masonry">
-    <div class="m-item reveal " onclick="openModal('adv-maroon-blue.jpg','Combo Sets','Adventure Combo','₹699','Maroon cargo shirt + adventure tee combo. Available M, L, XL. Free delivery.')"><img src="adv-maroon-blue.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal d1" onclick="openModal('leopard-trio.jpg','Shirts','Leopard Ikat Shirt','₹450','Cotton printed LEOPARD shirt in 3 colours. Available S, M, L. Free delivery.')"><img src="leopard-trio.jpg" alt="Leopard Ikat Shirt"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal d2" onclick="openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped','₹599','Black & grey striped shirts. Available M, L, XL. Free delivery.')"><img src="rc-stripe-pair.jpg" alt="Right Colours Striped"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal " onclick="openModal('adv-skyblue.jpg','Combo Sets','Adventure Combo','₹699','Sky-blue cargo shirt + tee. Available M, L, XL. Free delivery.')"><img src="adv-skyblue.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal d1" onclick="openModal('leopard-check-trio.jpg','Shirts','Leopard Checks','₹599','Windowpane check shirt in 3 colours. Available M, L, XL. Free delivery.')"><img src="leopard-check-trio.jpg" alt="Leopard Checks"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal d2" onclick="openModal('adv-black-pink.jpg','Combo Sets','Adventure Combo','₹699','Black cargo shirt + pink adventure tee. Available M, L, XL. Free delivery.')"><img src="adv-black-pink.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal " onclick="openModal('rc-checks-pair.jpg','Shirts','Right Colours Checks','₹599','Charcoal & beige plaid shirts. Available M, L, XL. Free delivery.')"><img src="rc-checks-pair.jpg" alt="Right Colours Checks"><div class="m-hover"><span class="m-icon">+</span></div></div>
-    <div class="m-item reveal d1" onclick="openModal('adv-lavender.jpg','Combo Sets','Adventure Combo','₹699','Lavender cargo shirt + tee. Available M, L, XL. Free delivery.')"><img src="adv-lavender.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal " onclick="openModal('adv-maroon-blue.jpg','Combo Sets','Adventure Combo','₹699','Maroon cargo shirt + adventure tee combo. Available M, L, XL. Free delivery.')"><img loading="lazy" src="adv-maroon-blue.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal d1" onclick="openModal('leopard-trio.jpg','Shirts','Leopard Ikat Shirt','₹450','Cotton printed LEOPARD shirt in 3 colours. Available S, M, L. Free delivery.')"><img loading="lazy" src="leopard-trio.jpg" alt="Leopard Ikat Shirt"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal d2" onclick="openModal('rc-stripe-pair.jpg','Shirts','Right Colours Striped','₹599','Black & grey striped shirts. Available M, L, XL. Free delivery.')"><img loading="lazy" src="rc-stripe-pair.jpg" alt="Right Colours Striped"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal " onclick="openModal('adv-skyblue.jpg','Combo Sets','Adventure Combo','₹699','Sky-blue cargo shirt + tee. Available M, L, XL. Free delivery.')"><img loading="lazy" src="adv-skyblue.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal d1" onclick="openModal('leopard-check-trio.jpg','Shirts','Leopard Checks','₹599','Windowpane check shirt in 3 colours. Available M, L, XL. Free delivery.')"><img loading="lazy" src="leopard-check-trio.jpg" alt="Leopard Checks"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal d2" onclick="openModal('adv-black-pink.jpg','Combo Sets','Adventure Combo','₹699','Black cargo shirt + pink adventure tee. Available M, L, XL. Free delivery.')"><img loading="lazy" src="adv-black-pink.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal " onclick="openModal('rc-checks-pair.jpg','Shirts','Right Colours Checks','₹599','Charcoal & beige plaid shirts. Available M, L, XL. Free delivery.')"><img loading="lazy" src="rc-checks-pair.jpg" alt="Right Colours Checks"><div class="m-hover"><span class="m-icon">+</span></div></div>
+    <div class="m-item reveal d1" onclick="openModal('adv-lavender.jpg','Combo Sets','Adventure Combo','₹699','Lavender cargo shirt + tee. Available M, L, XL. Free delivery.')"><img loading="lazy" src="adv-lavender.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
   </div>
 </section>
 
@@ -896,6 +951,9 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <span>Opp. Canara Bank, Weekly Bazar Road,<br>Bichkunda — 503 306, Telangana</span>
     </div>
     <div class="visit-owner reveal d1">Proprietor — Syed Khaled · Boys &amp; Mens Fashion</div>
+    <div class="visit-hours reveal d1">
+      <span class="vh-dot"></span> Open Daily · 10:00 AM – 9:00 PM
+    </div>
     <div class="visit-actions reveal d2">
       <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store!%20I%20saw%20your%20website%20and%20wanted%20to%20enquire." target="_blank" rel="noopener" class="contact-btn wa">
         <span class="cb-icon">✆</span>
@@ -905,10 +963,18 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
         <span class="cb-icon">⌾</span>
         <span class="cb-text"><span class="cb-label">Follow on Instagram</span><span class="cb-value">@perfect_dresses.bkd</span></span>
       </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Perfect+Fashion+Store+Opp+Canara+Bank+Weekly+Bazar+Road+Bichkunda+Telangana+503306" target="_blank" rel="noopener" class="contact-btn mp">
+        <span class="cb-icon">➤</span>
+        <span class="cb-text"><span class="cb-label">Get Directions</span><span class="cb-value">Open in Google Maps</span></span>
+      </a>
+      <button onclick="shareStore()" class="contact-btn sh" style="border:none;width:100%;font-family:inherit;cursor:pointer">
+        <span class="cb-icon">⇪</span>
+        <span class="cb-text" style="text-align:left"><span class="cb-label">Tell Your Friends</span><span class="cb-value">Share This Store</span></span>
+      </button>
     </div>
   </div>
   <div class="visit-logo-wrap reveal d2">
-    <img class="visit-logo" src="logo.jpg" alt="Perfect Fashion Store">
+    <img loading="lazy" class="visit-logo" src="logo.jpg" alt="Perfect Fashion Store">
   </div>
 </section>
 
@@ -1074,6 +1140,30 @@ heroVid.addEventListener('ended', function() {
   heroVid.play();
 });
 
+// ── Category filter ──
+function filterCat(cat, btn) {
+  document.querySelectorAll('.ftab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.prod-grid .prod-card').forEach(c => {
+    if (cat === 'all' || c.dataset.cat === cat) c.classList.remove('hide');
+    else c.classList.add('hide');
+  });
+}
+
+// ── Share store ──
+function shareStore() {
+  const data = {
+    title: 'Perfect Fashion Store, Bichkunda',
+    text: 'Check out Perfect Fashion Store — trendy boys & mens fashion from ₹450 with FREE home delivery!',
+    url: location.href
+  };
+  if (navigator.share) { navigator.share(data).catch(()=>{}); }
+  else {
+    const msg = encodeURIComponent(data.text + ' ' + location.href);
+    window.open('https://wa.me/?text=' + msg, '_blank');
+  }
+}
+
 // ── WhatsApp helpers ──
 const WA_NUMBER = '919949042570';
 function waEnquire(productName) {
@@ -1081,21 +1171,72 @@ function waEnquire(productName) {
   window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
 }
 
+// ── PRODUCT DATA (images + sizes per product) ──
+const PRODUCTS = {
+  'Right Colours Striped Shirt': { sizes:['M','L','XL'], images:['rc-stripe-pair.jpg'] },
+  'Right Colours Checks Shirt':  { sizes:['M','L','XL'], images:['rc-checks-pair.jpg'] },
+  'Leopard Checks Shirt':        { sizes:['M','L','XL'], images:['leopard-check-trio.jpg','leopard-check-trio2.jpg'] },
+  'Adventure Cargo Shirt + Tee': { sizes:['M','L','XL'], images:['adv-maroon-blue.jpg','adv-black-pink.jpg','adv-brown-blue.jpg','adv-skyblue.jpg','adv-lavender.jpg'] },
+  'Adventure Combo':             { sizes:['M','L','XL'], images:['adv-maroon-blue.jpg','adv-black-pink.jpg','adv-brown-blue.jpg','adv-skyblue.jpg','adv-lavender.jpg'] },
+  'Cotton Printed Shirt':        { sizes:['S','M','L'],  images:['leopard-front-flat.jpg','leopard-back-flat.jpg','leopard-model-front.jpg','leopard-model-back-v.jpg','leopard-trio.jpg','leopard-bw.jpg'] },
+  'Leopard Ikat Shirt':          { sizes:['S','M','L'],  images:['leopard-trio.jpg','leopard-bw.jpg','leopard-model-front.jpg','leopard-model-back-v.jpg'] },
+  'Satin Cotton Checks':         { sizes:['M','L','XL'], images:['polo-front.jpg','polo-flat.jpg','polo-back.jpg','polo-side.jpg'] },
+  'Knitted Denim Shirt':         { sizes:['M','L','XL'], images:['jeans-front.jpg','jeans-flat.jpg','jeans-back.jpg','jeans-side.jpg'] },
+  'Wakanda Graphic Tee':         { sizes:['S','M','L','XL'], images:['wakanda-tee.jpg','cargo-side.jpg'] },
+  'Right Colours Striped':       { sizes:['M','L','XL'], images:['rc-stripe-pair.jpg'] },
+  'Right Colours Checks':        { sizes:['M','L','XL'], images:['rc-checks-pair.jpg'] },
+  'Leopard Checks':              { sizes:['M','L','XL'], images:['leopard-check-trio.jpg','leopard-check-trio2.jpg'] }
+};
+let mProduct = { name:'', price:'', size:'' };
+
+function updateWa() {
+  const sizeTxt = mProduct.size ? ` in size ${mProduct.size}` : '';
+  const msg = encodeURIComponent(`Hi Perfect Fashion Store! I'm interested in the "${mProduct.name}" (${mProduct.price})${sizeTxt}. Is it available?`);
+  document.getElementById('mWhatsapp').href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+}
+
 // ── MODAL ──
 function openModal(img, cat, name, price, desc) {
   document.getElementById('mImg').src = img;
   document.getElementById('mCat').textContent = cat;
   document.getElementById('mName').textContent = name;
-  document.getElementById('mPrice').textContent = price;
+  document.getElementById('mPrice').textContent = price + ' · Free Delivery';
   document.getElementById('mDesc').textContent = desc;
-  const msg = encodeURIComponent(`Hi Perfect Fashion Store! I'm interested in the "${name}" (${price}). Is it available?`);
-  document.getElementById('mWhatsapp').href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+  mProduct = { name, price, size:'' };
+
+  const p = PRODUCTS[name] || { sizes:['M','L','XL'], images:[img] };
+
+  // Build size chips
+  const sizesEl = document.getElementById('mSizes');
+  sizesEl.innerHTML = '';
+  p.sizes.forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'sz';
+    b.textContent = s;
+    b.onclick = () => { document.querySelectorAll('.sz').forEach(x => x.classList.remove('on')); b.classList.add('on'); mProduct.size = s; updateWa(); };
+    sizesEl.appendChild(b);
+  });
+
+  // Build thumbnail strip
+  const thumbs = document.getElementById('mThumbs');
+  thumbs.innerHTML = '';
+  const imgs = p.images.includes(img) ? p.images : [img, ...p.images];
+  if (imgs.length > 1) {
+    imgs.forEach(src => {
+      const t = document.createElement('img');
+      t.src = src;
+      t.className = 'mthumb' + (src === img ? ' on' : '');
+      t.onclick = () => { document.getElementById('mImg').src = src; thumbs.querySelectorAll('.mthumb').forEach(x => x.classList.remove('on')); t.classList.add('on'); };
+      thumbs.appendChild(t);
+    });
+  }
+
+  updateWa();
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
 document.getElementById('modal').addEventListener('click', e => { if (e.target === document.getElementById('modal')) closeModal(); });
-function pickSz(btn) { document.querySelectorAll('.sz').forEach(b => b.classList.remove('on')); btn.classList.add('on'); }
 
 // ── SMOOTH SCROLL ──
 document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -1114,6 +1255,13 @@ window.addEventListener('scroll', () => {
     heroVid.style.transform = `translateY(${window.scrollY * 0.3}px)`;
   }
 }, { passive: true });
+</script>
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('backTop').classList.toggle('show', window.scrollY > 800);
+}, {passive:true});
 </script>
 </body>
 </html>
