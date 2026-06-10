@@ -536,7 +536,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     <p class="hero-sub">Trendy shirts, tees &amp; everyday fashion for boys &amp; men — at honest prices, with free home delivery. Fresh styles, in store and at your door.</p>
     <div class="hero-ctas">
       <a href="#featured" class="btn-rust">View Collection &rarr;</a>
-      <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store!" target="_blank" rel="noopener" class="btn-ghost">Enquire on WhatsApp</a>
+      <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store%21" target="_blank" rel="noopener" class="btn-ghost">Enquire on WhatsApp</a>
     </div>
   </div>
 </section>
@@ -725,7 +725,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
     </div>
   </div>
   <div class="reveal" style="text-align:center;margin-top:48px">
-    <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store!%20I%20want%20to%20see%20your%20full%20collection." target="_blank" rel="noopener" class="btn-rust">See More on WhatsApp &rarr;</a>
+    <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store%21%20I%20want%20to%20see%20your%20full%20collection." target="_blank" rel="noopener" class="btn-rust">See More on WhatsApp &rarr;</a>
   </div>
 </section>
 
@@ -803,7 +803,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
   <div class="trending-head">
     <div class="s-header reveal">
       <div><div class="s-label">What's Hot</div><h2 class="s-title">Trending <em>Now</em></h2></div>
-      <a href="#" class="view-all">All Trending</a>
+      <a href="#arrivals" class="view-all">All Trending</a>
     </div>
   </div>
   <div class="car-wrap">
@@ -927,7 +927,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 <section class="gallery" id="gallery">
   <div class="s-header reveal">
     <div><div class="s-label">The Feed</div><h2 class="s-title">Shot <em>Different</em></h2></div>
-    <a href="#" class="view-all">@perfectfashionstore</a>
+    <a href="https://instagram.com/perfect_dresses.bkd" target="_blank" rel="noopener" class="view-all">@perfect_dresses.bkd</a>
   </div>
     <div class="masonry">
     <div class="m-item reveal " onclick="openModal('adv-maroon-blue.jpg','Combo Sets','Adventure Combo','₹699','Maroon cargo shirt + adventure tee combo. Available M, L, XL. Free delivery.')"><img loading="lazy" src="adv-maroon-blue.jpg" alt="Adventure Combo"><div class="m-hover"><span class="m-icon">+</span></div></div>
@@ -955,7 +955,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
       <span class="vh-dot"></span> Open Daily · 10:00 AM – 9:00 PM
     </div>
     <div class="visit-actions reveal d2">
-      <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store!%20I%20saw%20your%20website%20and%20wanted%20to%20enquire." target="_blank" rel="noopener" class="contact-btn wa">
+      <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store%21%20I%20saw%20your%20website%20and%20wanted%20to%20enquire." target="_blank" rel="noopener" class="contact-btn wa">
         <span class="cb-icon">✆</span>
         <span class="cb-text"><span class="cb-label">WhatsApp / Call</span><span class="cb-value">+91 99490 42570</span></span>
       </a>
@@ -1025,7 +1025,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(245,240,232,.0
 
 <!-- FLOAT CTA -->
 <div class="float-cta" id="floatCta">
-  <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store!%20I%20want%20to%20enquire%20about%20your%20collection." target="_blank" rel="noopener">✆ Chat on WhatsApp</a>
+  <a href="https://wa.me/919949042570?text=Hi%20Perfect%20Fashion%20Store%21%20I%20want%20to%20enquire%20about%20your%20collection." target="_blank" rel="noopener">✆ Chat on WhatsApp</a>
 </div>
 
 <script>
@@ -1167,7 +1167,7 @@ function shareStore() {
 // ── WhatsApp helpers ──
 const WA_NUMBER = '919949042570';
 function waEnquire(productName) {
-  const msg = encodeURIComponent(`Hi Perfect Fashion Store! I'm interested in the "${productName}". Is it available?`);
+  const msg = waMsg(`Hi Perfect Fashion Store! I am interested in the "${productName}". Is it available?`);
   window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
 }
 
@@ -1189,9 +1189,16 @@ const PRODUCTS = {
 };
 let mProduct = { name:'', price:'', size:'' };
 
+function waMsg(text) {
+  // Fully encode for maximum WhatsApp/Android compatibility (encodeURIComponent leaves ! ' ( ) * unencoded)
+  return encodeURIComponent(text)
+    .replace(/!/g, '%21').replace(/'/g, '%27')
+    .replace(/\(/g, '%28').replace(/\)/g, '%29')
+    .replace(/\*/g, '%2A');
+}
 function updateWa() {
   const sizeTxt = mProduct.size ? ` in size ${mProduct.size}` : '';
-  const msg = encodeURIComponent(`Hi Perfect Fashion Store! I'm interested in the "${mProduct.name}" (${mProduct.price})${sizeTxt}. Is it available?`);
+  const msg = waMsg(`Hi Perfect Fashion Store! I am interested in the "${mProduct.name}" (${mProduct.price})${sizeTxt}. Is it available?`);
   document.getElementById('mWhatsapp').href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
 }
 
